@@ -65,8 +65,8 @@ Feature: Login
 
 
 #  @user1
-#    @UI
-#    @omer
+    @UI
+    @omer
 #    @smoke
 #    @login
   Scenario: is user able to login version 6

@@ -11,12 +11,15 @@ import utilities.Driver;
 import java.util.List;
 import java.util.Map;
 
+import static stepDefinitions.Hooks.driver;
+
 public class Deneme_stepDef {
     String user1_email = "user1@gmail.com";
 
     // scenario 1 datayi step icerisinde olusturarak
     @Given("Step Definition icinde user and password")
     public void step_definition_icinde_user_and_password() {
+
         Utility.printName();
         Utility.printMail(user1_email);
         Utility.printMail(user1_email);
@@ -104,6 +107,8 @@ public class Deneme_stepDef {
     @Given("tag kullanarak")
     public void tagKullanarak() {
         System.out.println("tag kullanarak cagirildi");
+        driver.get("https://stackoverflow.com/questions/40763263/maven-could-not-find-artifact-when-trying-to-include-a-project-in-another-one-u");
+
 
     }
 
