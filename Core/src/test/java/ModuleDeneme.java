@@ -1,6 +1,6 @@
 
 import com.KesifPlus.ui.Utility;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class ModuleDeneme {
     @Test
