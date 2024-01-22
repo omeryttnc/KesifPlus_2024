@@ -9,5 +9,8 @@ public class Utility {
         System.out.println("print mail called");
         System.out.println(name + "@gmail.com");
     }
+    public static void printKesif(){
+        System.out.println("kesif plus");
+    }
 
 }

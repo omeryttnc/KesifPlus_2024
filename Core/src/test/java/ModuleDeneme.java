@@ -6,6 +6,7 @@ public class ModuleDeneme {
     @Test
     public void name() {
         Utility.printName();
+        Utility.printKesif();
 
     }
 }

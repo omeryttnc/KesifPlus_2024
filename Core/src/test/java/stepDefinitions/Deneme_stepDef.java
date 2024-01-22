@@ -107,7 +107,7 @@ public class Deneme_stepDef {
     @Given("tag kullanarak")
     public void tagKullanarak() {
         System.out.println("tag kullanarak cagirildi");
-        driver.get("https://stackoverflow.com/questions/40763263/maven-could-not-find-artifact-when-trying-to-include-a-project-in-another-one-u");
+        driver.get("https://stackoverflow.com");
 
 
     }
