@@ -14,7 +14,7 @@
         <protocol>http</protocol>
 
         <!-- title of the document -->
-        <documentTitle> Test Reports</documentTitle>
+        <documentTitle>Test Reports</documentTitle>
 
         <!-- report name - displayed at top-nav -->
         <reportName>Smoke Test Report</reportName>

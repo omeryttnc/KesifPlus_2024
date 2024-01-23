@@ -64,9 +64,9 @@ Feature: Login
       | Benefit Bella Bamba                                          | 2     | 56.00   | false |
 
 
-#  @user1
-    @UI
-    @omer
+  @user1
+#    @UI
+#    @omer
 #    @smoke
 #    @login
   Scenario: is user able to login version 6
@@ -74,7 +74,7 @@ Feature: Login
 
 
 
-#    @DB
+    @DB
   Scenario: is user able to login version 7
     Given Enum kullanarak
 

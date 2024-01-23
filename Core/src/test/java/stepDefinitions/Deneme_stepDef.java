@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import com.KesifPlus.ui.Utility;
+import enums.EnumCalismasi;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,7 +15,7 @@ import java.util.Map;
 import static stepDefinitions.Hooks.driver;
 
 public class Deneme_stepDef {
-    String user1_email = "user1@gmail.com";
+  private   String user1_email = "user1@gmail.com";
 
     // scenario 1 datayi step icerisinde olusturarak
     @Given("Step Definition icinde user and password")
@@ -107,15 +108,14 @@ public class Deneme_stepDef {
     @Given("tag kullanarak")
     public void tagKullanarak() {
         System.out.println("tag kullanarak cagirildi");
-        driver.get("https://stackoverflow.com");
+      //  driver.get("https://stackoverflow.com");
 
 
     }
 
     @Given("Enum kullanarak")
     public void enumKullanarak() {
-        // EnumCalismasi.USER2.login();
-
+        EnumCalismasi.USER1.login();
 
     }
 
