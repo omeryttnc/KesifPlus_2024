@@ -1,2 +1,3 @@
 ctrl alt V return e gore bize bir obje olsuturur
 ctrl alt L code lari hizaya getirir
+ctrl alt O gereksiz importlari kaldirir
