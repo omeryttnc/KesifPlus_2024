@@ -2,14 +2,23 @@ package stepDefinitions.UI_StepDefs.RegisterPage;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pages.RegisterPage;
 
 import java.util.List;
 
+import static stepDefinitions.Hooks.driver;
+
 public class Friday_034_stepDef {
 
     RegisterPage rp = new RegisterPage();
+
+    @Given("User goes to homepage")
+    public void userGoesToHomepage() {
+        driver.get("https://test.urbanicfarm.com/");
+    }
+
     @And("Click the {string} button on the main Page")
     public void clickTheButtonOnTheMainPage(String text) {
         rp.clickMainButton(text);
@@ -38,6 +47,5 @@ public class Friday_034_stepDef {
         List<List<String>> listItems = dataTable.asLists(String.class);
         rp.verifyEmails(listItems);
     }
-
 
 }

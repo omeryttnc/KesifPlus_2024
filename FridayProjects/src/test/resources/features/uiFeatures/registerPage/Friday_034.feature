@@ -8,28 +8,28 @@ Feature: US_034
 
     Then Verify that first name entries match the expected result
 #       | First Name  | Expected |
-        | empty       | false    |
+        |             | false    |
         | Mehmet123   | false    |
         | Mehmet@     | false    |
         | Mehmet      | true     |
 
     Then Verify that middle name entries match the expected result
 #     | Middle Name | Expected |
-      | empty       | true     |
+      |             | true     |
       | Emin456     | false    |
       | Emin#       | false    |
       | Emin        | true     |
 
     Then verify that last name entries match the expected result
 #     | Last Name  | Expected Result |
-      | empty      | false           |
+      |            | false           |
       | Demir123   | false           |
       | Demir-     | false           |
       | Demir      | true            |
 
     Then Verify that email entries match the expected result
 #     | Email                 | Expected |
-      | empty                 | false    |
+      |                       | false    |
       | @                     | false    |
       | mehmetemin.com        | false    |
       | mehmet.emin@          | false    |

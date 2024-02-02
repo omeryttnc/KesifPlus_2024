@@ -38,7 +38,9 @@ public class RegisterPage extends CommonPage{
         String isTrue;
         Boolean isValid;
         for(int i=0; i<listItems.size(); i++){
-            text = ((listItems.get(i).get(0)).equals("empty")) ? text : listItems.get(i).get(0);
+//          gelen bilgi "empty" String değeri ise text="" olarak değişsin
+//          text = ((listItems.get(i).get(0)).equals("empty")) ? text : listItems.get(i).get(0);
+            text = ((listItems.get(i).get(0)) == null) ? text : listItems.get(i).get(0); // gelen bilgi null ise text="" olarak değişsin
             isTrue = listItems.get(i).get(1);
 
             firstNameInput.clear();
@@ -56,7 +58,9 @@ public class RegisterPage extends CommonPage{
         String isTrue;
         Boolean isValid;
         for(int i=0; i<listItems.size(); i++){
-            text = ((listItems.get(i).get(0)).equals("empty")) ? text : listItems.get(i).get(0);
+//          gelen bilgi "empty" String değeri ise text="" olarak değişsin
+//          text = ((listItems.get(i).get(0)).equals("empty")) ? text : listItems.get(i).get(0);
+            text = ((listItems.get(i).get(0)) == null) ? text : listItems.get(i).get(0); // gelen bilgi null ise text="" olarak değişsin
             isTrue = listItems.get(i).get(1);
 
             middleNameInput.clear();
@@ -74,7 +78,9 @@ public class RegisterPage extends CommonPage{
         String isTrue;
         Boolean isValid;
         for (int i=0; i<listItems.size(); i++) {
-            text = ((listItems.get(i).get(0)).equals("empty")) ? text : listItems.get(i).get(0);
+//          gelen bilgi "empty" String değeri ise text="" olarak değişsin
+//          text = ((listItems.get(i).get(0)).equals("empty")) ? text : listItems.get(i).get(0);
+            text = ((listItems.get(i).get(0)) == null) ? text : listItems.get(i).get(0); // gelen bilgi null ise text="" olarak değişsin
             isTrue = listItems.get(i).get(1);
 
             lastNameInput.clear();
@@ -93,7 +99,9 @@ public class RegisterPage extends CommonPage{
         Boolean isValid;
         String message;
         for(int i=0; i<listItems.size(); i++){
-            text = ((listItems.get(i).get(0)).equals("empty")) ? text : listItems.get(i).get(0);
+//          gelen bilgi "empty" String değeri ise text="" olarak değişsin
+//          text = ((listItems.get(i).get(0)).equals("empty")) ? text : listItems.get(i).get(0);
+            text = ((listItems.get(i).get(0)) == null) ? text : listItems.get(i).get(0); // gelen bilgi null ise text="" olarak değişsin
             isTrue = listItems.get(i).get(1);
 
             eMailInput.clear();
