@@ -1,0 +1,31 @@
+css                                 xpath
+
+
+. -> class                            //tag[@attr=value]
+.mr-4
+
+# -> id
+#firstName
+
+[attr=value]
+[href='/auth/register']
+
+^ -> starts with
+[href^='/auth']
+
+$ -> end with
+[class$='Al']
+
+* -> contains
+[class*='Al']
+
+~ -> contains (butun kelimeyi girmemiz gerekiyor)
+
+, -> veya anlami veriyor
+.mr-4,.mr-2
+
+    -> ve demek istersek hicbir bilgi girmeden iki locator ardi ardina yazariz
+.mr-4.mr-2
+
+bosluk css de alttaki butun class lari anlamina gelir
+> -> bir alt class a gecmemizi saglar
