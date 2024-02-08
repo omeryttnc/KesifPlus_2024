@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 
+import enums.USERINFO;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -82,8 +83,11 @@ public class Hooks {
                 "email : " + ConfigurationReader.getProperty("user1_email") +
                         " password : " + ConfigurationReader.getProperty("user1_password")
         );
+    }
 
-
+    @Before("@buyerLogin")
+    public void buyerLogin(){
+        commonPage.getLoginPage().loginMethod(USERINFO.BUYER);
     }
 
 

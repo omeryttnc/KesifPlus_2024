@@ -12,10 +12,26 @@ public abstract class CommonPage {
 
     private HomePage homePage;
     private LoginPage loginPage;
+    private AccountPage accountPage;
+    private WeeklyOrderPage weeklyOrderPage;
+
+    public WeeklyOrderPage getWeeklyOrderPage() {
+        if (weeklyOrderPage == null) {
+            weeklyOrderPage = new WeeklyOrderPage();
+        }
+        return weeklyOrderPage;
+    }
+
+    public AccountPage getAccountPage() {
+        if (accountPage == null) {
+            accountPage = new AccountPage();
+        }
+        return accountPage;
+    }
 
     public LoginPage getLoginPage() {
-        if(loginPage==null){
-            loginPage=new LoginPage();
+        if (loginPage == null) {
+            loginPage = new LoginPage();
         }
         return loginPage;
     }
