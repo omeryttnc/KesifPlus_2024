@@ -28,21 +28,20 @@ public class ReusableMethods {
 
     private static WebDriverWait wait;
 
-    public static String getScreenshot() throws IOException {
-        // naming the screenshot with the current date to avoid duplication
+    public static String getScreenshot() {
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
-        // TakesScreenshot is an interface of selenium that takes the screenshot
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         File source = ts.getScreenshotAs(OutputType.FILE);
-        // full path to the screenshot location
         String target = System.getProperty("user.dir") + "/test-output/Screenshots/" + date + ".png";
         File finalDestination = new File(target);
-        // save the screenshot to the path given
-        FileUtils.copyFile(source, finalDestination);
+        try {
+            FileUtils.copyFile(source, finalDestination);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return target;
     }
 
-    //========Switching Window=====//
     public static Object switchToWindow(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
         for (String handle : Driver.getDriver().getWindowHandles()) {
@@ -55,13 +54,10 @@ public class ReusableMethods {
         return null;
     }
 
-    //========Hover Over(ScrollDown)=====//
     public static void hover(WebElement element) {
-  //      Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(element).perform();
     }
 
-    //==========Return a list of string given a list of Web Element====////
     public static List<String> getElementsText(List<WebElement> list) {
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : list) {
@@ -72,7 +68,6 @@ public class ReusableMethods {
         return elemTexts;
     }
 
-    //========Returns the Text of the element given an element locator==//
     public static List<String> getElementsText(By locator) {
         List<WebElement> elems = Driver.getDriver().findElements(locator);
         List<String> elemTexts = new ArrayList<>();
@@ -84,8 +79,6 @@ public class ReusableMethods {
         return elemTexts;
     }
 
-    //   HARD WAIT WITH THREAD.SLEEP
-//   waitFor(5);  => waits for 5 second => Thread.sleep(5000)
     public static void waitFor(int sec) {
         try {
             Thread.sleep(sec * 1000);
@@ -94,7 +87,6 @@ public class ReusableMethods {
         }
     }
 
-    //===============Explicit Wait==============//
     public static WebElement waitForVisibility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.visibilityOf(element));
@@ -142,9 +134,7 @@ public class ReusableMethods {
         }
     }
 
-    //======Fluent Wait====//
     public static WebElement fluentWait(final WebElement webElement, int timeout) {
-        //FluentWait<WebDriver> wait = new FluentWait<WebDriver>(Driver.getDriver()).withTimeout(timeinsec, TimeUnit.SECONDS).pollingEvery(timeinsec, TimeUnit.SECONDS);
         FluentWait<WebDriver> wait = new FluentWait<WebDriver>(Driver.getDriver())
                 .withTimeout(Duration.ofSeconds(3))//Wait 3 second each time
                 .pollingEvery(Duration.ofSeconds(1))////Check for the element every 1 second
@@ -270,29 +260,28 @@ public class ReusableMethods {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", webElement);
     }
 
-
     public static void uploadFilePath(String filePath) {
         try {
             ReusableMethods.waitFor(3);
             StringSelection stringSelection = new StringSelection(filePath);
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
             Robot robot = new Robot();
-            //pressing ctrl+v
+
             robot.keyPress(KeyEvent.VK_CONTROL);
             ReusableMethods.waitFor(3);
             robot.keyPress(KeyEvent.VK_V);
             ReusableMethods.waitFor(3);
-            //releasing ctrl+v
+
             robot.keyRelease(KeyEvent.VK_CONTROL);
             ReusableMethods.waitFor(3);
             robot.keyRelease(KeyEvent.VK_V);
             ReusableMethods.waitFor(3);
             System.out.println("PASSED");
-            //pressing enter
+
             ReusableMethods.waitFor(3);
             robot.keyPress(KeyEvent.VK_ENTER);
             ReusableMethods.waitFor(3);
-            //releasing enter
+
             robot.keyRelease(KeyEvent.VK_ENTER);
             ReusableMethods.waitFor(3);
             System.out.println("ENTER");
@@ -307,8 +296,6 @@ public class ReusableMethods {
             element.sendKeys(Keys.BACK_SPACE);
         }
     }
-
-    
 
     public static void clearValue(WebElement element, String text) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value','" + text + "')", element);
