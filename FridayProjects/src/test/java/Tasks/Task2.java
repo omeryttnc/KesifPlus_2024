@@ -1,8 +1,7 @@
 package Tasks;
 
-import lombok.ToString;
 import org.junit.Test;
-
+import utilities.Utilities;
 import java.util.List;
 
 public class Task2 {
@@ -47,8 +46,8 @@ public class Task2 {
     public void structural4(){
         System.out.println("------------ Structural Programming, Alternative 4");
         for (int i=0; i<names.size(); i++){
-            if(Task2_Utilities.filterLessThanFive((names.get(i)))){
-                Task2_Utilities.printName(names.get(i));
+            if(Utilities.filterLessThanFive((names.get(i)))){
+                Utilities.printName(names.get(i));
             }
         }
     }
@@ -59,16 +58,14 @@ public class Task2 {
         System.out.println();
         System.out.println("------------ Functional Programming, Alternative 1");
         names.stream().filter(name -> name.length() <=5).forEach(System.out::println);
-                                                      // forEach(name -> System.out.println(name));
-
+        // Aynı işlemi yapıyor   -------------------->  .forEach(name -> System.out.println(name));
     }
 
     @Test
     public void functional2(){
         System.out.println("------------ Functional Programming, Alternative 2");
-        names.stream().filter(Task2_Utilities::filterLessThanFive)
-                     .forEach(Task2_Utilities::printName);
-
+        names.stream().filter(Utilities::filterLessThanFive)
+                     .forEach(Utilities::printName);
     }
 
 

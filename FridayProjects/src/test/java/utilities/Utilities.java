@@ -1,6 +1,6 @@
-package Tasks;
+package utilities;
 
-public class Task2_Utilities {
+public class Utilities {
 
     public static boolean filterLessThanFive(String str){
         return str.length() <= 5;
