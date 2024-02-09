@@ -1,7 +1,7 @@
 package Tasks;
 
 import org.junit.Test;
-import utilities.Utilities;
+import utils.Utilities;
 import java.util.List;
 
 public class Task2 {
