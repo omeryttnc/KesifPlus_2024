@@ -29,3 +29,11 @@ $ -> end with
 
 bosluk css de alttaki butun class lari anlamina gelir
 > -> bir alt class a gecmemizi saglar
+
+:nth-of-type(n)
+:first-of-type
+:last-of-type
+
+:first-child
+:last-child
+:nth-child()
