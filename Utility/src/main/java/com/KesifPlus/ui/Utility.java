@@ -15,8 +15,4 @@ public class Utility {
         System.out.println("kesif plus");
     }
 
-    public static void printProject(){
-        System.out.println("Deneme");
-    }
-
 }
