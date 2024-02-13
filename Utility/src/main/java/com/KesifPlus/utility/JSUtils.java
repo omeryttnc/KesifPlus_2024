@@ -1,4 +1,4 @@
-package utilities;
+package com.KesifPlus.utility;
 
 
 import org.openqa.selenium.JavascriptExecutor;

@@ -8,7 +8,8 @@ import pages.RegisterPage;
 
 import java.util.List;
 
-import static stepDefinitions.Hooks.driver;
+import static com.KesifPlus.HooksImp.driver;
+
 
 public class Friday_034_stepDef {
 

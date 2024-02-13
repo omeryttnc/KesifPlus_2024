@@ -1,33 +1,23 @@
 package stepDefinitions.uiStepDef;
 
-import enums.USERINFO;
-import io.cucumber.java.an.E;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebElement;
 import pages.CommonPage;
-import ru.yandex.qatools.ashot.comparison.ImageDiff;
-import ru.yandex.qatools.ashot.comparison.ImageDiffer;
-import utilities.BrowserUtilities;
+import com.KesifPlus.utility.BrowserUtilities;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import static com.KesifPlus.HooksImp.driver;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-import static stepDefinitions.Hooks.actions;
-import static stepDefinitions.Hooks.driver;
-import static utilities.BrowserUtilities.isExist;
+import static com.KesifPlus.utility.BrowserUtilities.isExist;
 
 public class week2_US50 extends CommonPage {
     //    String email = "peummonnemane-5141@yopmail.com";

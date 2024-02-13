@@ -5,7 +5,7 @@ import enums.ENUMDENEME;
 import org.junit.Test;
 import pojos.ClassRecord;
 import pojos.RecordClass;
-import utilities.BrowserUtilities;
+import com.KesifPlus.utility.BrowserUtilities;
 
 public class ModuleDeneme {
 

@@ -1,4 +1,4 @@
-package utilities;
+package com.KesifPlus.utility;
 
 public class Utilities {
 

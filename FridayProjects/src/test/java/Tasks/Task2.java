@@ -1,7 +1,7 @@
 package Tasks;
 
+import com.KesifPlus.utility.Utilities;
 import org.junit.Test;
-import utilities.Utilities;
 import java.util.List;
 
 public class Task2 {

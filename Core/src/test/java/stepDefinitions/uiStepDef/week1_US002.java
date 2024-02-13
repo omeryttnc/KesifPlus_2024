@@ -8,11 +8,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import pages.HomePage;
-import pages.LoginPage;
-import utilities.BrowserUtilities;
+import com.KesifPlus.utility.BrowserUtilities;
 
-import static stepDefinitions.Hooks.commonPage;
-import static stepDefinitions.Hooks.driver;
+import static com.KesifPlus.HooksImp.driver;
+
 
 public class week1_US002 extends CommonPage {
     HomePage homePage = new HomePage();

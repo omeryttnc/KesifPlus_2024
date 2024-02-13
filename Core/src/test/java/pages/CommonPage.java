@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.support.PageFactory;
 
-import static stepDefinitions.Hooks.driver;
+import static com.KesifPlus.HooksImp.driver;
 
 
 public abstract class CommonPage {
@@ -14,6 +14,14 @@ public abstract class CommonPage {
     private LoginPage loginPage;
     private AccountPage accountPage;
     private WeeklyOrderPage weeklyOrderPage;
+    private ProductPage productPage;
+
+    public ProductPage getProductPage() {
+        if (productPage == null) {
+            productPage=new ProductPage();
+        }
+        return productPage;
+    }
 
     public WeeklyOrderPage getWeeklyOrderPage() {
         if (weeklyOrderPage == null) {
