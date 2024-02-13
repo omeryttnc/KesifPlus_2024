@@ -20,6 +20,8 @@ public class HomePage extends CommonPage implements IPage {
     @FindBy(css = "nav>a[href^='/account/home']")
     public WebElement accountName_navbar;
 
+    @FindBy(css = "[href='/account/hub']")
+    public WebElement yourProductService_navbar;
     @FindBy(css = ".Toastify__toast ")
     public WebElement toastMessage;
 
