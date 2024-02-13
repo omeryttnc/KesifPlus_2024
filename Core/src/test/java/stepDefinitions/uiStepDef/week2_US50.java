@@ -1,22 +1,33 @@
 package stepDefinitions.uiStepDef;
 
 import enums.USERINFO;
+import io.cucumber.java.an.E;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
+import org.junit.Test;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebElement;
 import pages.CommonPage;
+import ru.yandex.qatools.ashot.comparison.ImageDiff;
+import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 import utilities.BrowserUtilities;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static stepDefinitions.Hooks.actions;
+import static stepDefinitions.Hooks.driver;
+import static utilities.BrowserUtilities.isExist;
 
 public class week2_US50 extends CommonPage {
     //    String email = "peummonnemane-5141@yopmail.com";
@@ -61,6 +72,7 @@ public class week2_US50 extends CommonPage {
 
         BrowserUtilities.waitForVisibility(getHomePage().toastMessage);
         Assert.assertEquals(expectedToastMessage, getHomePage().toastMessage.getText());
+        getHomePage().toastMessage.click();
     }
 
     @And("toast message colour should be green colour")
@@ -99,7 +111,7 @@ public class week2_US50 extends CommonPage {
 
     @Then("Choose file should be visible")
     public void chooseFileShouldBeVisible() {
-       assertTrue(getAccountPage().chooseFile.isDisplayed());
+        assertTrue(getAccountPage().chooseFile.isDisplayed());
     }
 
     @When("user change the first image")
@@ -110,14 +122,12 @@ public class week2_US50 extends CommonPage {
     @And("user should take a copy of first image")
     public void userShouldTakeACopyOfFirstImage() {
         File screenshotAs = getAccountPage().flagImage.getScreenshotAs(OutputType.FILE);
-        File destination = new File(BrowserUtilities.getTargetPath()+"/firstImage.png");
+        File destination = new File(BrowserUtilities.getTargetPath() + "/firstImage.png");
         try {
-            FileUtils.copyFile(screenshotAs,destination);
+            FileUtils.copyFile(screenshotAs, destination);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        BrowserUtilities.getScreenShotOfWebelement(getAccountPage().flagImage,"firstImage");
 
     }
 
@@ -128,11 +138,14 @@ public class week2_US50 extends CommonPage {
 
     @And("user should take a copy of second image")
     public void userShouldTakeACopyOfSecondImage() {
-        BrowserUtilities.getScreenShotOfWebelement(getAccountPage().flagImage,"secondImage");
+        BrowserUtilities.getScreenShotOfWebelement(getAccountPage().flagImage, "secondImage");
     }
+
     @Then("assert that first and second image should be difference")
     public void assertThatFirstAndSecondImageShouldBeDifference() {
+        BrowserUtilities.isPictureDifferent("firstImage", "secondImage");
     }
+
 
     @Given("user should clear phone number")
     public void userShouldClearPhoneNumber() {
@@ -144,15 +157,26 @@ public class week2_US50 extends CommonPage {
 
     @And("click on save button")
     public void clickOnSaveButton() {
+        getAccountPage().saveButton.click();
     }
-
+    Dimension initialDimensions;
     @When("user clicks on toggle button")
     public void userClicksOnToggleButton() {
+        initialDimensions = driver.manage().window().getSize();
+
+        getAccountPage().toggleButton.click();
+        BrowserUtilities.waitFor(5);
     }
 
     @Then("menu dimension should change")
     public void menuDimensionShouldChange() {
+        Assert.assertFalse(isExist(getHomePage().yourProductService_navbar));
+
+        Dimension updatedDimensions = driver.manage().window().getSize();
+       // assertNotEquals(initialDimensions, updatedDimensions);
     }
+
+
 
 
 }

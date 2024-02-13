@@ -8,7 +8,11 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.ashot.comparison.ImageDiff;
+import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
@@ -108,5 +112,39 @@ public class BrowserUtilities {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+    public static  void isPictureDifferent(String resim1,String resim2)  {
+        BufferedImage image1, image2;
+        File path1 = new File(BrowserUtilities.getTargetPath() + "/"+resim1+".png");
+        File path2 = new File(BrowserUtilities.getTargetPath() + "/"+resim2+".png");
+
+        try {
+            image1 = ImageIO.read(path1);
+            image2 = ImageIO.read(path2);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        ImageDiffer imageDiffer = new ImageDiffer();
+        ImageDiff imageDiff = imageDiffer.makeDiff(image1, image2);
+
+        boolean hasDifferent = imageDiff.hasDiff();
+        Assert.assertTrue(hasDifferent);
+    }
+
+    public static boolean isExist(WebElement webElement) {
+
+        boolean flag;
+        try {
+            flag = webElement.isDisplayed();
+            System.out.println("try");
+        } catch (Exception e) {
+            System.out.println("catch");
+            flag = false;
+        }
+        return flag;
+
     }
 }
