@@ -2,7 +2,8 @@ package pages;
 
 import org.openqa.selenium.support.PageFactory;
 
-import static stepDefinitions.Hooks.driver;
+import static com.KesifPlus.HooksImp.driver;
+
 
 public abstract class CommonPage {
 

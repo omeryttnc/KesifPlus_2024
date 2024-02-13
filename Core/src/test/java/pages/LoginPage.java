@@ -5,7 +5,8 @@ import myInterface.IPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static stepDefinitions.Hooks.driver;
+import static com.KesifPlus.HooksImp.driver;
+
 
 public class LoginPage extends CommonPage implements IPage {
     @FindBy(css = "[name='email']")

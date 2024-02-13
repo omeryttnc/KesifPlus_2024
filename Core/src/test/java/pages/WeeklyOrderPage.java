@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utilities.BrowserUtilities;
+import com.KesifPlus.utility.BrowserUtilities;
 
 import static stepDefinitions.Hooks.actions;
 

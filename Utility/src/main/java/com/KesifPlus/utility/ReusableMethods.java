@@ -1,4 +1,4 @@
-package utilities;
+package com.KesifPlus.utility;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
@@ -19,14 +19,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 
+import static com.KesifPlus.HooksImp.driver;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static stepDefinitions.Hooks.actions;
-import static stepDefinitions.Hooks.driver;
+
 
 public class ReusableMethods {
 
     private static WebDriverWait wait;
+    static Actions actions = new Actions(driver);
 
     public static String getScreenshot() {
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
@@ -298,26 +299,26 @@ public class ReusableMethods {
     }
 
     public static void clearValue(WebElement element, String text) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value','" + text + "')", element);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].setAttribute('value','" + text + "')", element);
     }
 
     public static void nullCheck(WebElement element, String text) {
-        if (text!=null) {
+        if (text != null) {
             element.sendKeys(text);
-        }else System.err.println("Null is not allowed for this method");
+        } else System.err.println("Null is not allowed for this method");
     }
-    
+
     public static void scrollToBottom() {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,document.body.scrollHeight)");
         waitFor(2);
     }
 
     public static void sendText(WebElement element, String text) {
-        try{
+        try {
             waitForClickablility(element, 15).sendKeys(text);
-        }catch (ElementNotInteractableException e){
+        } catch (ElementNotInteractableException e) {
             scrollToElement(element);
-            sendText(element,text);
+            sendText(element, text);
         }
     }
 

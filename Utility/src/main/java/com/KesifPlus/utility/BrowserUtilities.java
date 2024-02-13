@@ -1,9 +1,9 @@
-package utilities;
+package com.KesifPlus.utility;
 
 
-import manifold.ext.rt.api.This;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
-import static stepDefinitions.Hooks.driver;
+import static com.KesifPlus.HooksImp.driver;
 
 public class BrowserUtilities {
     public static void dogumYili(Integer yas) {
@@ -132,6 +132,7 @@ public class BrowserUtilities {
 
         boolean hasDifferent = imageDiff.hasDiff();
         Assert.assertTrue(hasDifferent);
+
     }
 
     public static boolean isExist(WebElement webElement) {
@@ -146,5 +147,10 @@ public class BrowserUtilities {
         }
         return flag;
 
+    }
+
+    public static void scrollAndClick(WebElement webElement){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true)",webElement);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click()",webElement);
     }
 }

@@ -6,7 +6,8 @@ import org.junit.Assert;
 
 import java.lang.String;
 
-import static stepDefinitions.Hooks.driver;
+import static com.KesifPlus.HooksImp.driver;
+
 
 @Extension
 public class MyString {

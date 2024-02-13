@@ -5,14 +5,11 @@ import enums.EnumCalismasi;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.junit.Test;
-import utilities.ConfigurationReader;
-import utilities.Driver;
+import com.KesifPlus.utility.ConfigurationReader;
 
 import java.util.List;
 import java.util.Map;
 
-import static stepDefinitions.Hooks.driver;
 
 public class Deneme_stepDef {
   private   String user1_email = "user1@gmail.com";

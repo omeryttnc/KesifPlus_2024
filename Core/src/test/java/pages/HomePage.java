@@ -7,7 +7,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static stepDefinitions.Hooks.driver;
+import static com.KesifPlus.HooksImp.driver;
+
 
 public class HomePage extends CommonPage implements IPage {
 
