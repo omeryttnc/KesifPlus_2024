@@ -1,4 +1,4 @@
-package utilities;
+package com.KesifPlus.utility;
 
 
 import org.openqa.selenium.Dimension;
@@ -16,7 +16,7 @@ import org.openqa.selenium.safari.SafariDriver;
 import java.time.Duration;
 import java.util.HashMap;
 
-import static stepDefinitions.Hooks.*;
+import static com.KesifPlus.HooksImp.*;
 
 
 public class Driver {

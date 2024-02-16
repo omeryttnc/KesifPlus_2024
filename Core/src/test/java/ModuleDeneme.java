@@ -1,11 +1,11 @@
 
 import com.KesifPlus.ui.Utility;
+import com.KesifPlus.utility.Utilities;
 import enums.ClassDeneme;
 import enums.ENUMDENEME;
 import org.junit.Test;
 import pojos.ClassRecord;
 import pojos.RecordClass;
-import utilities.BrowserUtilities;
 
 public class ModuleDeneme {
 
@@ -32,7 +32,7 @@ public class ModuleDeneme {
     public void manifoldSample() {
         Integer age = 28;
         age.helloWorld();
-        BrowserUtilities.dogumYili(28);
+        Utilities.dogumYili(28);
         age.dogumYili();
     }
 

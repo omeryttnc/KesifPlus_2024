@@ -1,14 +1,17 @@
 package pages;
 
+import com.KesifPlus.utility.Driver;
+import com.KesifPlus.utility.Utilities;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utilities.Driver;
-import utilities.ReusableMethods;
+
 
 import java.util.List;
+
+import static com.KesifPlus.HooksImp.driver;
 
 public class RegisterPage extends CommonPage{
 
@@ -28,7 +31,7 @@ public class RegisterPage extends CommonPage{
     private WebElement registerBtn;
 
     public void clickMainButton(String btnName){
-        WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
+        WebElement element = driver.findElement(By.xpath("//div/a[contains(text(), '" +
                 btnName + "')]"));
         element.click();
     }
@@ -44,8 +47,8 @@ public class RegisterPage extends CommonPage{
             isTrue = listItems.get(i).get(1);
 
             firstNameInput.clear();
-            ReusableMethods.sendText(firstNameInput,text);   //elemente scroll yapılma ihtiyacı için ara metod eklendi
-            ReusableMethods.waitAndClickElement(registerBtn, 2);   //her saniye click denemesi yapılması için eklendi
+            Utilities.sendText(firstNameInput,text);   //elemente scroll yapılma ihtiyacı için ara metod eklendi
+//            Utilities.waitAndClickElement(registerBtn, 2);   //her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", firstNameInput);
@@ -64,8 +67,8 @@ public class RegisterPage extends CommonPage{
             isTrue = listItems.get(i).get(1);
 
             middleNameInput.clear();
-            ReusableMethods.sendText(middleNameInput,text);   // elemente scroll yapılma ihtiyacı için eklendi
-            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
+//            ReusableMethods.sendText(middleNameInput,text);   // elemente scroll yapılma ihtiyacı için eklendi
+//            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", middleNameInput);
@@ -84,8 +87,8 @@ public class RegisterPage extends CommonPage{
             isTrue = listItems.get(i).get(1);
 
             lastNameInput.clear();
-            ReusableMethods.sendText(lastNameInput,text);   // elemente scroll yapılma ihtiyacı için eklendi
-            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
+//            ReusableMethods.sendText(lastNameInput,text);   // elemente scroll yapılma ihtiyacı için eklendi
+//            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", lastNameInput);
@@ -105,8 +108,8 @@ public class RegisterPage extends CommonPage{
             isTrue = listItems.get(i).get(1);
 
             eMailInput.clear();
-            ReusableMethods.sendText(eMailInput,text);   // elemente scroll yapılma ihtiyacı için ara metod eklendi
-            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
+//            ReusableMethods.sendText(eMailInput,text);   // elemente scroll yapılma ihtiyacı için ara metod eklendi
+//            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", eMailInput);

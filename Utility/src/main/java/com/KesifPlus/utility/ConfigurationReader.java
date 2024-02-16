@@ -1,4 +1,4 @@
-package utilities;
+package com.KesifPlus.utility;
 import java.io.FileInputStream;
 import java.util.Properties;
 
