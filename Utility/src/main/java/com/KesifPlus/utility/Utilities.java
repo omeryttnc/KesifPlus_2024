@@ -4,14 +4,12 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,12 +18,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-import java.util.function.Function;
 
 import static com.KesifPlus.HooksImp.driver;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class Utilities {
 
@@ -185,6 +179,7 @@ public class Utilities {
     public static void scrollDownByJS() {
         JavascriptExecutor jsexecutor = ((JavascriptExecutor) Driver.getDriver());
         jsexecutor.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        waitFor(3);
     }
 
     public static void scrollAllUpByJS() {
@@ -318,6 +313,7 @@ public class Utilities {
 
     public static void scrollToElement(WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        waitForVisibility(element);
     }
 
     public static void switchToWindow(int windowNumber) {
@@ -340,7 +336,16 @@ public class Utilities {
         }
     }
 
-
+    public static void waitAndClickElement(WebElement element, int seconds){
+        for (int i=0; i<seconds; i++){
+            try {
+                element.click();
+                break;
+            }catch (Exception e) {
+                waitFor(1);
+            }
+        }
+    }
 
 
 
