@@ -1,5 +1,6 @@
-package com.KesifPlus.utility;
+package com.KesifPlus.ui;
 
+import com.KesifPlus.utility.Driver;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -27,8 +28,21 @@ public class Utilities {
         return str.length() <= 5;
     }
 
+    public static void printName() {
+        System.out.println("com.KesifPlus.ui.Utility is called");
+    }
+
     public static void printName(String str){
         System.out.println("name is " + str);
+    }
+
+    public static void printMail(String name) {
+        System.out.println("print mail called");
+        System.out.println(name + "@gmail.com");
+    }
+
+    public static void printKesif(){
+        System.out.println("kesif plus");
     }
 
     public static void dogumYili(Integer yas) {

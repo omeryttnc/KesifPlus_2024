@@ -1,7 +1,7 @@
 package pages;
 
 import com.KesifPlus.utility.Driver;
-import com.KesifPlus.utility.Utilities;
+import com.KesifPlus.ui.Utilities;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
