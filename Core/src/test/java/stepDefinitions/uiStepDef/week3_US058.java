@@ -1,6 +1,6 @@
 package stepDefinitions.uiStepDef;
 
-import com.KesifPlus.utility.Utilities;
+import com.KesifPlus.ui.Utilities;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import pages.CommonPage;
-import com.KesifPlus.utility.DatabaseUtilities;
+import com.KesifPlus.database.DatabaseUtilities;
 
 import static com.KesifPlus.HooksImp.driver;
 

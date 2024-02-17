@@ -1,6 +1,5 @@
 
-import com.KesifPlus.ui.Utility;
-import com.KesifPlus.utility.Utilities;
+import com.KesifPlus.ui.Utilities;
 import enums.ClassDeneme;
 import enums.ENUMDENEME;
 import org.junit.Test;
@@ -38,8 +37,8 @@ public class ModuleDeneme {
 
     @Test
     public void name() {
-        Utility.printName();
-        Utility.printKesif();
-        Utility.printMail("omer");
+        Utilities.printName();
+        Utilities.printKesif();
+        Utilities.printMail("omer");
     }
 }

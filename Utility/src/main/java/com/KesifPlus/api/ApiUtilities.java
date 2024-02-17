@@ -1,4 +1,4 @@
-package com.KesifPlus.utility;
+package com.KesifPlus.api;
 
 
 import io.restassured.specification.RequestSpecification;

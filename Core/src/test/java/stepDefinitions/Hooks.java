@@ -11,7 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.interactions.Actions;
 import pages.CommonPage;
 import com.KesifPlus.utility.ConfigurationReader;
-import com.KesifPlus.utility.DatabaseUtilities;
+import com.KesifPlus.database.DatabaseUtilities;
 import com.KesifPlus.utility.Driver;
 
 import static com.KesifPlus.HooksImp.driver;

@@ -1,6 +1,6 @@
 package pages;
 
-import com.KesifPlus.utility.Utilities;
+import com.KesifPlus.ui.Utilities;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

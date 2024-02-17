@@ -1,4 +1,6 @@
-package com.KesifPlus.utility;
+package com.KesifPlus.database;
+
+import com.KesifPlus.utility.ConfigurationReader;
 
 import java.sql.*;
 

@@ -1,6 +1,5 @@
 package stepDefinitions.UI_StepDefs.RegisterPage;
 
-import com.KesifPlus.utility.Utilities;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;

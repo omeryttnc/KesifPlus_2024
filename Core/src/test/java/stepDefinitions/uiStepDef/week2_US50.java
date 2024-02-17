@@ -1,6 +1,6 @@
 package stepDefinitions.uiStepDef;
 
-import com.KesifPlus.utility.Utilities;
+import com.KesifPlus.ui.Utilities;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
