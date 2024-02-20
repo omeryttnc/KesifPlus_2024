@@ -10,7 +10,7 @@ css                                 xpath
 [attr=value]
 [href='/auth/register']
 
-^ -> starts with
+^ -> starts with                    //tag[contains(@attr,'')]
 [href^='/auth']
 
 $ -> end with
@@ -21,16 +21,16 @@ $ -> end with
 
 ~ -> contains (butun kelimeyi girmemiz gerekiyor)
 
-, -> veya anlami veriyor
+, -> veya anlami veriyor                     or
 .mr-4,.mr-2
 
     -> ve demek istersek hicbir bilgi girmeden iki locator ardi ardina yazariz
-.mr-4.mr-2
+.mr-4.mr-2                                  and
 
 bosluk css de alttaki butun class lari anlamina gelir
 > -> bir alt class a gecmemizi saglar
 
-:nth-of-type(n)
+:nth-of-type(n)                             (//tag[@attr=value])[]
 :first-of-type
 :last-of-type
 
