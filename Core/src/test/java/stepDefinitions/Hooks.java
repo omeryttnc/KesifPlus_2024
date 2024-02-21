@@ -8,6 +8,8 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.html5.LocalStorage;
+import org.openqa.selenium.html5.WebStorage;
 import org.openqa.selenium.interactions.Actions;
 import pages.CommonPage;
 import com.KesifPlus.utility.ConfigurationReader;
@@ -57,7 +59,9 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", "screenshots");
         }
 //        Driver.closeDriver();
-
+        LocalStorage localStorage = ((WebStorage) driver).getLocalStorage();
+        localStorage.clear();
+        driver.navigate().refresh();
     }
 
 

@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
@@ -359,6 +360,12 @@ public class Utilities {
                 waitFor(1);
             }
         }
+    }
+
+    public static void selectByValue(WebElement webElement,String value){
+        Select select = new Select(webElement);
+        select.selectByValue(value);
+
     }
 
 
