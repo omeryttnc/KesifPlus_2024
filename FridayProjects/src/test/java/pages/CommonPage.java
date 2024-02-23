@@ -16,6 +16,14 @@ public abstract class CommonPage {
     private AccountPage accountPage;
     private OrdersPage ordersPage;
     private LoginPage loginPage;
+    private SoldItemsPage soldItemsPage;
+
+    public SoldItemsPage getSoldItemsPage() {
+        if (soldItemsPage == null){
+            soldItemsPage = new SoldItemsPage();
+        }
+        return soldItemsPage;
+    }
 
     public LoginPage getLoginPage() {
         if (loginPage == null){
