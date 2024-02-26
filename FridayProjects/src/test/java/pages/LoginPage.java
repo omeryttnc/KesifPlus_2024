@@ -1,6 +1,7 @@
 package pages;
 
 import com.KesifPlus.ui.Utilities;
+import enums.USERCREDENTIAL;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -18,4 +19,14 @@ public class LoginPage extends CommonPage{
         Utilities.sendText(input_password, password);
         Utilities.waitAndClickElement(submit_button, 5);
     }
+
+    public void loginUserProfile(String profilName){
+        getRegisterPage().clickMainButton("Login");
+        if(profilName.equals("BUYER")){
+            loginWithCredentials(USERCREDENTIAL.BUYER.getUsername(), USERCREDENTIAL.BUYER.getPassword());
+        }else{
+            loginWithCredentials(USERCREDENTIAL.SELLER.getUsername(), USERCREDENTIAL.SELLER.getPassword());
+        }
+    }
+
 }
