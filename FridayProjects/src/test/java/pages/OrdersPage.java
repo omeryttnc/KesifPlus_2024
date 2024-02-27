@@ -283,6 +283,4 @@ public class OrdersPage extends CommonPage {
         Assert.assertTrue(notificationNumContainer.getText().isEmpty());
     }
 
-
-
 }
