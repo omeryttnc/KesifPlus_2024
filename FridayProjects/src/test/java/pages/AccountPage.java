@@ -19,10 +19,13 @@ public class AccountPage extends CommonPage {
     }
 
     public void addZipCode(String zipCode) {
+//        Utilities.sendText(inputZipCode, zipCode);
+//        zipCodeBtn.click();
+//        Utilities.waitFor(5);
+
         try {
             Utilities.sendText(inputZipCode, zipCode);
             zipCodeBtn.click();
-            Utilities.waitFor(5);
         } catch (Exception e) {
         }
 

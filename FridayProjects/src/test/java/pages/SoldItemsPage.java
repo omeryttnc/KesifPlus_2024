@@ -19,10 +19,12 @@ public class SoldItemsPage extends CommonPage {
     private List<WebElement> soldItemStatusList;
     @FindBy(xpath = "(//span[contains(@class, 'notificationIconContainer')])[1]")
     private WebElement notificationBtn;
-    @FindBy(xpath = "//div[contains(@class, 'notificationCardContainer')]//p")
-    private List<WebElement> notificationDetailList;
-    @FindBy(xpath = "//div[contains(@class, 'notificationCardContainer')]//a")
-    private List<WebElement> notificationNoticeList;
+//    @FindBy(xpath = "//div[contains(@class, 'notificationCardContainer')]//p")
+//    private List<WebElement> notificationDetailList;
+    @FindBy(xpath = "//div[contains(@class, 'notificationInfoDate')]//p[contains(@class, 'infoCommonText')]")
+    private List<WebElement> notificationDateTimeList;
+//    @FindBy(xpath = "//div[contains(@class, 'notificationCardContainer')]//a")
+//    private List<WebElement> notificationNoticeList;
     @FindBy(xpath = "//span[contains(@class, 'Notifications_slider')]")
     private List<WebElement> notificationReadMarkList;
     @FindBy(xpath = "//span[contains(text(), 'Mark all as read')]")
@@ -35,6 +37,8 @@ public class SoldItemsPage extends CommonPage {
     private WebElement notificationDownBtn;
     @FindBy(xpath = "(//div[contains(@class, 'notificationNumContainer')])[1]")
     private WebElement notificationNumContainer;
+    @FindBy(xpath = "//div[contains(@class, 'notificationInfoText')]//*[contains(@class, 'CommonText')]")
+    private List<WebElement> notificationInfoMessage;
 
     public static final String itemName = "Apple";
     public static final String itemPrice = "$1.00";
