@@ -1,6 +1,6 @@
 package stepDefinitions;
 
-import com.KesifPlus.ui.Utility;
+import com.KesifPlus.ui.Utilities;
 import enums.EnumCalismasi;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
@@ -18,9 +18,9 @@ public class Deneme_stepDef {
     @Given("Step Definition icinde user and password")
     public void step_definition_icinde_user_and_password() {
 
-        Utility.printName();
-        Utility.printMail(user1_email);
-        Utility.printMail(user1_email);
+        Utilities.printName();
+        Utilities.printMail(user1_email);
+        Utilities.printMail(user1_email);
         String user1_password = "user1Passsword";
         System.out.println("user name :" + user1_email + " password : " + user1_password);
     }

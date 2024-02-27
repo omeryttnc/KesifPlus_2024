@@ -26,6 +26,9 @@ public class HomePage extends CommonPage implements IPage {
     @FindBy(css = ".Toastify__toast ")
     public WebElement toastMessage;
 
+    @FindBy(css = "[href='/account/delivery']")
+    public WebElement deliverySettings_sidebar;
+
     @Override
     public void goTo() {
         driver.get("https://test.urbanicfarm.com/home");

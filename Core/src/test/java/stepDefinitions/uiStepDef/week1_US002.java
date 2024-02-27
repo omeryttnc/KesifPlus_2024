@@ -1,5 +1,6 @@
 package stepDefinitions.uiStepDef;
 
+import com.KesifPlus.ui.Utilities;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import pages.HomePage;
-import com.KesifPlus.utility.BrowserUtilities;
 
 import static com.KesifPlus.HooksImp.driver;
 
@@ -54,7 +54,7 @@ public class week1_US002 extends CommonPage {
         Assert.assertEquals(expectedTitle, driver.getTitle());
 
         // way 2
-        BrowserUtilities.assertTitleIfEquals(expectedTitle);
+        Utilities.assertTitleIfEquals(expectedTitle);
 
         // way 3
         expectedTitle.assertTitleIfEquals();

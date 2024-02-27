@@ -1,5 +1,6 @@
 package stepDefinitions.uiStepDef;
 
+import com.KesifPlus.ui.Utilities;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,7 +10,6 @@ import org.junit.Assert;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import pages.CommonPage;
-import com.KesifPlus.utility.BrowserUtilities;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +17,6 @@ import java.io.IOException;
 import static com.KesifPlus.HooksImp.driver;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-import static com.KesifPlus.utility.BrowserUtilities.isExist;
 
 public class week2_US50 extends CommonPage {
     //    String email = "peummonnemane-5141@yopmail.com";
@@ -60,7 +59,7 @@ public class week2_US50 extends CommonPage {
     @Then("user should be able to see {string} toast message")
     public void userShouldBeAbleToSeeToastMessage(String expectedToastMessage) {
 
-        BrowserUtilities.waitForVisibility(getHomePage().toastMessage);
+        Utilities.waitForVisibility(getHomePage().toastMessage);
         Assert.assertEquals(expectedToastMessage, getHomePage().toastMessage.getText());
         getHomePage().toastMessage.click();
     }
@@ -73,7 +72,7 @@ public class week2_US50 extends CommonPage {
 //        Assert.assertEquals(expectedCssValue,actualCssValue);
 
         // way 2
-        BrowserUtilities.assertBackgroundColor(getHomePage().toastMessage, "rgba(7, 188, 12, 1)");
+        Utilities.assertBackgroundColor(getHomePage().toastMessage, "rgba(7, 188, 12, 1)");
         // way 3
         // getHomePage().toastMessage.assertBackgroundColor("rgba(112, 199, 69, 1)");
     }
@@ -81,7 +80,7 @@ public class week2_US50 extends CommonPage {
 
     @Given("user should delete QRCode.png file if exist")
     public void userShouldDeleteQRCodePngFileIfExist() {
-        BrowserUtilities.deleteQRPicture();
+        Utilities.deleteQRPicture();
     }
 
     @When("user click on download button")
@@ -91,7 +90,7 @@ public class week2_US50 extends CommonPage {
 
     @Then("user should have QRCode.png file on local")
     public void userShouldHaveQRCodePngFileOnLocal() {
-        BrowserUtilities.assertQRPicture();
+        Utilities.assertQRPicture();
     }
 
     @When("user clicks on edit button")
@@ -106,13 +105,13 @@ public class week2_US50 extends CommonPage {
 
     @When("user change the first image")
     public void userChangeTheFirstImage() {
-        getAccountPage().chooseFile.sendKeys(BrowserUtilities.getFlagPath("flagCanada"));
+        getAccountPage().chooseFile.sendKeys(Utilities.getFlagPath("flagCanada"));
     }
 
     @And("user should take a copy of first image")
     public void userShouldTakeACopyOfFirstImage() {
         File screenshotAs = getAccountPage().flagImage.getScreenshotAs(OutputType.FILE);
-        File destination = new File(BrowserUtilities.getTargetPath() + "/firstImage.png");
+        File destination = new File(Utilities.getTargetPath() + "/firstImage.png");
         try {
             FileUtils.copyFile(screenshotAs, destination);
         } catch (IOException e) {
@@ -123,17 +122,17 @@ public class week2_US50 extends CommonPage {
 
     @And("user change the second image")
     public void userChangeTheSecondImage() {
-        getAccountPage().chooseFile.sendKeys(BrowserUtilities.getFlagPath("flagTurkey"));
+        getAccountPage().chooseFile.sendKeys(Utilities.getFlagPath("flagTurkey"));
     }
 
     @And("user should take a copy of second image")
     public void userShouldTakeACopyOfSecondImage() {
-        BrowserUtilities.getScreenShotOfWebelement(getAccountPage().flagImage, "secondImage");
+        Utilities.getScreenShotOfWebelement(getAccountPage().flagImage, "secondImage");
     }
 
     @Then("assert that first and second image should be difference")
     public void assertThatFirstAndSecondImageShouldBeDifference() {
-        BrowserUtilities.isPictureDifferent("firstImage", "secondImage");
+        Utilities.isPictureDifferent("firstImage", "secondImage");
     }
 
 
@@ -155,12 +154,12 @@ public class week2_US50 extends CommonPage {
         initialDimensions = driver.manage().window().getSize();
 
         getAccountPage().toggleButton.click();
-        BrowserUtilities.waitFor(5);
+        Utilities.waitFor(5);
     }
 
     @Then("menu dimension should change")
     public void menuDimensionShouldChange() {
-        Assert.assertFalse(isExist(getHomePage().yourProductService_navbar));
+        Assert.assertFalse(Utilities.isExist(getHomePage().yourProductService_navbar));
 
         Dimension updatedDimensions = driver.manage().window().getSize();
        // assertNotEquals(initialDimensions, updatedDimensions);

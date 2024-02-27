@@ -1,9 +1,9 @@
 package pages;
 
+import com.KesifPlus.ui.Utilities;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import com.KesifPlus.utility.BrowserUtilities;
 
 import static stepDefinitions.Hooks.actions;
 
@@ -12,7 +12,7 @@ public class WeeklyOrderPage extends CommonPage {
     public WebElement zipCode;
 
     public void sendZipcode(String zipcode) {
-        BrowserUtilities.waitForVisibility(zipCode);
+        Utilities.waitForVisibility(zipCode);
         zipCode.sendKeys(zipcode);
         actions.sendKeys(Keys.ENTER).perform();
     }

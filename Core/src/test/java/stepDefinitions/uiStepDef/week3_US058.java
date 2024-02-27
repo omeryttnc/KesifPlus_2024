@@ -1,5 +1,6 @@
 package stepDefinitions.uiStepDef;
 
+import com.KesifPlus.ui.Utilities;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -7,8 +8,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import pages.CommonPage;
-import com.KesifPlus.utility.BrowserUtilities;
-import com.KesifPlus.utility.DatabaseUtilities;
+import com.KesifPlus.database.DatabaseUtilities;
 
 import static com.KesifPlus.HooksImp.driver;
 
@@ -84,8 +84,8 @@ public class week3_US058 extends CommonPage {
         // way 3 by visible text
         select.selectByVisibleText("Pound");
 
-        BrowserUtilities.scrollAndClick(getProductPage().addNewProduct_Submit);
-        BrowserUtilities.waitFor(2);
+        Utilities.scrollAndClick(getProductPage().addNewProduct_Submit);
+        Utilities.waitFor(2);
     }
 
     @Then("In-Review should be visible on the added product.")
@@ -104,7 +104,7 @@ public class week3_US058 extends CommonPage {
     @Then("Approved should be visible on the added product.")
     public void approvedShouldBeVisibleOnTheAddedProduct() {
         driver.navigate().back();
-        BrowserUtilities.waitFor(2);
+        Utilities.waitFor(2);
         driver.navigate().forward();
 
         String actualState = getProductPage().getState(eklenecekUrun);

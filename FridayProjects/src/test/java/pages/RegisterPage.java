@@ -1,7 +1,7 @@
 package pages;
 
 import com.KesifPlus.utility.Driver;
-import com.KesifPlus.utility.ReusableMethods;
+import com.KesifPlus.ui.Utilities;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -47,8 +47,8 @@ public class RegisterPage extends CommonPage{
             isTrue = listItems.get(i).get(1);
 
             firstNameInput.clear();
-            ReusableMethods.sendText(firstNameInput,text);   //elemente scroll yapılma ihtiyacı için ara metod eklendi
-            ReusableMethods.waitAndClickElement(registerBtn, 2);   //her saniye click denemesi yapılması için eklendi
+            Utilities.sendText(firstNameInput,text);   //elemente scroll yapılma ihtiyacı için ara metod eklendi
+//            Utilities.waitAndClickElement(registerBtn, 2);   //her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", firstNameInput);
@@ -67,8 +67,8 @@ public class RegisterPage extends CommonPage{
             isTrue = listItems.get(i).get(1);
 
             middleNameInput.clear();
-            ReusableMethods.sendText(middleNameInput,text);   // elemente scroll yapılma ihtiyacı için eklendi
-            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
+//            ReusableMethods.sendText(middleNameInput,text);   // elemente scroll yapılma ihtiyacı için eklendi
+//            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", middleNameInput);
@@ -87,8 +87,8 @@ public class RegisterPage extends CommonPage{
             isTrue = listItems.get(i).get(1);
 
             lastNameInput.clear();
-            ReusableMethods.sendText(lastNameInput,text);   // elemente scroll yapılma ihtiyacı için eklendi
-            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
+//            ReusableMethods.sendText(lastNameInput,text);   // elemente scroll yapılma ihtiyacı için eklendi
+//            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", lastNameInput);
@@ -108,8 +108,8 @@ public class RegisterPage extends CommonPage{
             isTrue = listItems.get(i).get(1);
 
             eMailInput.clear();
-            ReusableMethods.sendText(eMailInput,text);   // elemente scroll yapılma ihtiyacı için ara metod eklendi
-            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
+//            ReusableMethods.sendText(eMailInput,text);   // elemente scroll yapılma ihtiyacı için ara metod eklendi
+//            ReusableMethods.waitAndClickElement(registerBtn, 2);   // her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", eMailInput);

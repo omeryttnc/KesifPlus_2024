@@ -15,6 +15,14 @@ public abstract class CommonPage {
     private AccountPage accountPage;
     private WeeklyOrderPage weeklyOrderPage;
     private ProductPage productPage;
+private DeliveryAndPickupSettings deliveryAndPickupSettings;
+
+    public DeliveryAndPickupSettings getDeliveryAndPickupSettings() {
+        if (deliveryAndPickupSettings == null) {
+            deliveryAndPickupSettings=new DeliveryAndPickupSettings();
+        }
+        return deliveryAndPickupSettings;
+    }
 
     public ProductPage getProductPage() {
         if (productPage == null) {
