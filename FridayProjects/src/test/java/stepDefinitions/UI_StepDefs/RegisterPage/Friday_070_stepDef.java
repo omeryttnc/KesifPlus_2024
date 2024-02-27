@@ -62,13 +62,16 @@ public class Friday_070_stepDef extends CommonPage {
 
     @And("Verify that mark all as read button is functional in Notifications")
     public void verifyThatMarkAllAsReadButtonIsFunctionalInNotifications() {
+        getOrdersPage().verifyMarkAllBtn();
     }
 
     @Then("Verify that X button is functional in Notifications")
     public void verifyThatXButtonIsFunctionalInNotifications() {
+        getOrdersPage().verifyXBtnFunc();
     }
 
     @And("Verify that mark all as read button gives correct result")
     public void verifyThatMarkAllAsReadButtonGivesCorrectResult() {
+        getOrdersPage().verifyMarkAllHasCorrectResult();
     }
 }
