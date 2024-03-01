@@ -1,5 +1,8 @@
 package pages;
 
+import com.KesifPlus.ui.Utilities;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import static com.KesifPlus.HooksImp.driver;
@@ -17,6 +20,22 @@ public abstract class CommonPage {
     private OrdersPage ordersPage;
     private LoginPage loginPage;
     private SoldItemsPage soldItemsPage;
+    private EventsPage eventsPage;
+    private MyEventsPage myEventsPage;
+
+    public EventsPage getEventsPage() {
+        if (eventsPage == null){
+            eventsPage = new EventsPage();
+        }
+        return eventsPage;
+    }
+
+    public MyEventsPage getMyEventsPage() {
+        if (myEventsPage == null){
+            myEventsPage = new MyEventsPage();
+        }
+        return myEventsPage;
+    }
 
     public SoldItemsPage getSoldItemsPage() {
         if (soldItemsPage == null){
@@ -59,4 +78,11 @@ public abstract class CommonPage {
         }
         return homePage;
     }
+
+    public void clickButton(String buttonTitle){
+        WebElement element = driver.findElement(By.xpath(
+                "//Button[.='" + buttonTitle +"']"));
+        Utilities.scrollAndClick(element);
+    }
+
 }
