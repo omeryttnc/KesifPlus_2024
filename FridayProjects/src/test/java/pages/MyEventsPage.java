@@ -33,6 +33,9 @@ public class MyEventsPage extends CommonPage {
     public void fillEventForm() {
         for (Map.Entry<String, String> pairs : map.entrySet()){
             WebElement inputArea = driver.findElement(By.id(pairs.getKey()));
+            if (pairs.getKey().equals("title")) {     // title için bekleme eklendi
+                Utilities.waitFor(1);
+            }
             inputArea.sendKeys(pairs.getValue());
         }
         fillAddress();
