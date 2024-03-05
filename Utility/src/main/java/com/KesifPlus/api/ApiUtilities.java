@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 public class ApiUtilities {
     static ResponseSpecification responseSpecification;
     static RequestSpecification requestSpecification;
-    static Response response;
+    public static Response response;
 
     public static void changePassword(String oldPassword, String newPassword, String token) {
         Map<String, String> map = new HashMap<>();
