@@ -21,7 +21,7 @@ public class KayitImpl {
         System.out.println("id \t\t first name \t\t last name \t\t age \t\t year");
         System.out.println("------------------------------------------------");
         for (int i = 0; i < idList.size(); i++) {
-            System.out.printf("%8s %15s %10s %15s %n",
+            System.out.printf("%s %8s %15s %10s %15s %n",
                     id,
                     map.get(idList.get(i)).firstName(),
                     map.get(idList.get(i)).lastName(),
