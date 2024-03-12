@@ -1,0 +1,596 @@
+{
+	"info": {
+		"_postman_id": "8ee16d41-086d-465e-be44-fd2cd4f8c68c",
+		"name": "Address",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11910468",
+		"_collection_link": "https://interstellar-spaceship-268984.postman.co/workspace/urbanicFarm2024~77f59091-459f-42ed-b39a-50c211d16432/collection/11910468-8ee16d41-086d-465e-be44-fd2cd4f8c68c?action=share&source=collection_link&creator=11910468"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"success key value is true\", function () {\r",
+							"   pm.expect(pm.response.json().success).to.equal(true);\r",
+							"});\r",
+							"\r",
+							"const token = pm.response.json().token\r",
+							"pm.collectionVariables.set('token',token)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "test.urbanicfarm.com"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer null"
+					},
+					{
+						"key": "cookie",
+						"value": "PHPSESSID=v7cmj3rfguo4u712hb72uhfha4; _gid=GA1.2.751485563.1709987386; _gat_UA-215893125-1=1; _ga=GA1.1.1525629813.1709987386; _ga_5Z7XPVQV85=GS1.2.1710005993.3.1.1710007708.0.0.0; _ga_E46MZR4LKC=GS1.1.1710005922.79.1.1710007709.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://test.urbanicfarm.com"
+					},
+					{
+						"key": "referer",
+						"value": "https://test.urbanicfarm.com/auth/login"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sessionid",
+						"value": "8d9a8302cd8591c0e242675ed70d8dc99ac6418c20f0495c0d48377d15fa94ed"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/public/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"public",
+						"login"
+					]
+				},
+				"description": "\nThis endpoint allows users to log in via a POST request to the specified URL. The request should include a form-data body type. Upon successful execution, the response will have a status code of 200 and a JSON content type. The response will include a \"success\" flag indicating the login status, along with a \"token\" for authentication and user details such as \"email\", \"first_name\", \"first_middle\", \"first_lastname\", and \"device_token\".\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "addAddress",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"success key value is true\", function (){\r",
+							"    pm.expect(pm.response.json().success).to.equal(true);\r",
+							"});\r",
+							"\r",
+							"pm.collectionVariables.set(\"createdAddressId\", pm.response.json().address.id);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "test.urbanicfarm.com"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "PHPSESSID=v7cmj3rfguo4u712hb72uhfha4; _gid=GA1.2.751485563.1709987386; _ga=GA1.1.1525629813.1709987386; _ga_5Z7XPVQV85=GS1.2.1710005993.3.1.1710007708.0.0.0; _ga_E46MZR4LKC=GS1.1.1710005922.79.1.1710007951.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://test.urbanicfarm.com"
+					},
+					{
+						"key": "referer",
+						"value": "https://test.urbanicfarm.com/account/address"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sessionid",
+						"value": "null"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"isDefault\":false,\"isSellerAddress\":false,\"title\":\"Home\",\"address\":\"San Jose, Kaliforniya, Amerika Birleşik Devletleri\",\"city\":\"San Jose\",\"state\":\"Santa Clara İlçesi\",\"postal\":\"95174\"}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/account/address/addAddress",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"account",
+						"address",
+						"addAddress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAddress",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let addressId = pm.collectionVariables.get(\"createdAddressId\");\r",
+							"\r",
+							"pm.test(\"success key value is true\", function () {\r",
+							"    pm.expect(pm.response.json().success).to.equal(true);\r",
+							"});\r",
+							"\r",
+							"let hasId = pm.response.json().addresses.some(function(address){\r",
+							"    return address.id == addressId;\r",
+							"});\r",
+							"tests[\"New address id is available\"] = hasId;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "test.urbanicfarm.com"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "content-length",
+						"value": "0"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "PHPSESSID=v7cmj3rfguo4u712hb72uhfha4; _gid=GA1.2.751485563.1709987386; _gat_UA-215893125-1=1; _ga=GA1.1.1525629813.1709987386; _ga_5Z7XPVQV85=GS1.2.1710005993.3.1.1710008319.0.0.0; _ga_E46MZR4LKC=GS1.1.1710005922.79.1.1710008322.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://test.urbanicfarm.com"
+					},
+					{
+						"key": "referer",
+						"value": "https://test.urbanicfarm.com/account/address"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sessionid",
+						"value": "null"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/account/address/getAddress",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"account",
+						"address",
+						"getAddress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateAddress",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let title = pm.variables.replaceIn(\"{{$randomCity}}\");\r",
+							"pm.environment.set(\"newTitle\", title);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"success key value is true\", function () {\r",
+							"    pm.expect(pm.response.json().success).to.equal(true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"address id is available\", function () {\r",
+							"    pm.expect(pm.response.json().address.id).to.equal(pm.collectionVariables.get(\"createdAddressId\"));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "test.urbanicfarm.com"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "PHPSESSID=v7cmj3rfguo4u712hb72uhfha4; _gid=GA1.2.751485563.1709987386; _ga=GA1.1.1525629813.1709987386; _ga_E46MZR4LKC=GS1.1.1710005922.79.1.1710009334.0.0.0; _ga_5Z7XPVQV85=GS1.2.1710005993.3.1.1710009334.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://test.urbanicfarm.com"
+					},
+					{
+						"key": "referer",
+						"value": "https://test.urbanicfarm.com/account/address"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sessionid",
+						"value": "null"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"isDefault\":false,\"isSellerAddress\":false,\"title\":\"{{newTitle}}\",\"address\":\"San Jose, Kaliforniya, Amerika Birleşik Devletleri\",\"city\":\"San Jose\",\"state\":\"Santa Clara İlçesi\",\"postal\":\"95174\",\"addressId\":{{createdAddressId}}}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/account/address/update",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"account",
+						"address",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAddress",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"success key value is true\", function () {\r",
+							"    pm.expect(pm.response.json().success).to.equal(false);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"descr key value is address deleted\", function () {\r",
+							"    pm.expect(pm.response.json().descr).to.equal(\"Address deleted\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "test.urbanicfarm.com"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "PHPSESSID=v7cmj3rfguo4u712hb72uhfha4; _gid=GA1.2.751485563.1709987386; _ga=GA1.1.1525629813.1709987386; _ga_5Z7XPVQV85=GS1.2.1710005993.3.1.1710011237.0.0.0; _ga_E46MZR4LKC=GS1.1.1710005922.79.1.1710011242.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://test.urbanicfarm.com"
+					},
+					{
+						"key": "referer",
+						"value": "https://test.urbanicfarm.com/account/address"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sessionid",
+						"value": "null"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"addressId\":\"{{createdAddressId}}\"}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/account/address/delete",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"account",
+						"address",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "collectionKey",
+			"value": ""
+		},
+		{
+			"key": "fakeFirstName",
+			"value": ""
+		},
+		{
+			"key": "addressIdColl",
+			"value": ""
+		},
+		{
+			"key": "createdAddressId",
+			"value": ""
+		}
+	]
+}

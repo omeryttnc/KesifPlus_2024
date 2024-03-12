@@ -1,6 +1,7 @@
 package stepDefinitions.backendStepDef;
 
 import com.KesifPlus.api.ApiUtilities;
+import com.KesifPlus.api.ForgotPassword;
 import com.KesifPlus.ui.Utilities;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -69,7 +70,7 @@ public class week5 extends CommonPage {
 
     @When("user change password through api")
     public void userChangePasswordThroughApi() {
-        ApiUtilities.changePassword(
+        ForgotPassword.changePassword(
                 "EPUcJ5xLpC6nynr",
                 "EPUcJ5xLpC6nynr123",
                 token
@@ -91,7 +92,7 @@ public class week5 extends CommonPage {
 
     @When("user change original password through api")
     public void userChangeOriginalPasswordThroughApi() {
-        ApiUtilities.changePassword(
+        ForgotPassword.changePassword(
                 "EPUcJ5xLpC6nynr123",
                 "EPUcJ5xLpC6nynr",
                 token
