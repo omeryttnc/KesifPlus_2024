@@ -60,11 +60,13 @@ public class Driver {
             chromeOptions.addArguments("--no-sandbox");
             chromeOptions.addArguments("--disable-dev-shm-usage");
             chromeOptions.addArguments("--remote-allow-origins=*");
+            chromeOptions.addArguments("--lang=en");
         } else {
             chromeOptions.addArguments("use-fake-ui-for-media-stream");
             chromeOptions.addArguments("--disable-gpu");
             chromeOptions.addArguments("--window-size=1920,1080");
             chromeOptions.addArguments("--remote-allow-origins=*");
+            chromeOptions.addArguments("--lang=en");
         }
 
         FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -72,11 +74,13 @@ public class Driver {
             firefoxOptions.addArguments("--headless");
             firefoxOptions.addArguments("--disable-gpu");
             firefoxOptions.addArguments("--window-size=1920,1080");
+            firefoxOptions.addArguments("--lang=en");
 //            firefoxOptions.addArguments("use-fake-ui-for-media-stream");
 
         } else {
             firefoxOptions.addArguments("--disable-gpu");
             firefoxOptions.addArguments("--window-size=1920,1080");
+            firefoxOptions.addArguments("--lang=en");
 //            firefoxOptions.addArguments("use-fake-ui-for-media-stream");
 
         }
