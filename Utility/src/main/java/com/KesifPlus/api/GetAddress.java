@@ -20,12 +20,9 @@ public class GetAddress {
         this.token = token;
         response = given()
                 .spec(requestSpecification)
-                .auth()
-                .oauth2(token)
                 .when()
                 .post("account/address/getAddress");
         JsonPath jsonPath = response.jsonPath();
-
         this.success = jsonPath.getBoolean("success");
         this.allId=jsonPath.getList("addresses.id");
         this.statusCode=response.statusCode();

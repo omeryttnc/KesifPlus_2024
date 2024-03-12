@@ -18,17 +18,21 @@ public class ApiUtilities {
     static ResponseSpecification responseSpecification;
     static RequestSpecification requestSpecification;
     public static Response response;
-
+    private String token = "";
     private GetAddress getAddress;
 
-    public GetAddress getGetAddress(String token) {
+    public GetAddress getGetAddress() {
         if (getAddress == null) {
-            getAddress= new GetAddress(token);
+            getAddress = new GetAddress(token);
         }
         return getAddress;
     }
 
     public ApiUtilities(String email, String password) {
+        requestSpecification = RestAssured.given();
+        requestSpecification.contentType(ContentType.JSON);
+        requestSpecification.baseUri("https://test.urbanicfarm.com");
+        requestSpecification.basePath("/api");
         Map<String, String> map = new HashMap<>();
         map.put("email", email);
         map.put("password", password);
@@ -38,12 +42,8 @@ public class ApiUtilities {
                 .body(map)
                 .when()
                 .post("https://test.urbanicfarm.com/api/public/login");
-        String token = response.jsonPath().getString("token");
 
-        requestSpecification = RestAssured.given();
-        requestSpecification.contentType(ContentType.JSON);
-        requestSpecification.baseUri("https://test.urbanicfarm.com");
-        requestSpecification.basePath("/api");
+        token = response.jsonPath().getString("token");
         requestSpecification.auth().oauth2(token);
 
         responseSpecification = RestAssured.expect();

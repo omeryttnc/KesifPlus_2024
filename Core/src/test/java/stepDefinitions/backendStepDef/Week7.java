@@ -1,7 +1,9 @@
 package stepDefinitions.backendStepDef;
 
+import com.KesifPlus.api.ApiUtilities;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import enums.USERINFO;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
@@ -126,4 +128,8 @@ public class Week7 extends TestCase {
 
     }
 
+    public void test3() {
+        ApiUtilities apiUtilities= new ApiUtilities(USERINFO.BUYER.getEmail(), USERINFO.BUYER.getPassword());
+        System.out.println("apiUtilities.getGetAddress().getAllCities() = " + apiUtilities.getGetAddress().getAllCities());
+    }
 }
