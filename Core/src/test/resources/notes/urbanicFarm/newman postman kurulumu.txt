@@ -1,0 +1,75 @@
+pojo cevirme linki 
+https://www.jsonschema2pojo.org/
+
+
+
+postman CLI
+1) postman CLI kurduk
+https://learning.postman.com/docs/postman-cli/postman-cli-installation/#windows-installation
+
+2) Token olusturduk
+PMAK-65f0be90a68fc400018fe0e1-fc60480fe023ddd1c33ef9a737bb65494f
+
+3) aldigimiz iki satirlik code u terminal e yapistiriyoruz
+postman login --with-api-key PMAK-65f0be90a68fc400018fe0e1-fc60480fe023ddd1c33ef9a737bb65494f
+postman collection run 11910468-8ee16d41-086d-465e-be44-fd2cd4f8c68c -e 11910468-fabab351-3953-4ece-bb04-466397d9050c
+
+____________________________________________________________________________________________________________________
+
+newman kurulumu
+1) node kurulumu diye kontrol ettik eger hata alinirsa isletim sistemi secilerek kurulum gerceklesir
+ node --version
+https://nodejs.org/en/download
+
+2) newman kurulumunu yaptik
+npm install -g newman 
+
+3) newman raporlarini ekleyelim 
+a) npm i -g newman-reporter-html
+b) npm i -g newman-reporter-htmlextra
+
+4) keyword
+
+-e  				-> environment 
+-d  				-> data 
+-r  				-> raporlama turu
+--delay-request			-> her istek arasinda ne kadar (ms) bekleme yapmak istersiniz
+--reporter-html-export		-> olusturulan html raporun yerini belirtiyoruz
+--reporter-htmlextra-export 	-> olusturulan html extra raporun yerini belirtiyoruz
+
+syntex
+
+newman run "collectionPath" -e "environmentPath" -d "dataPath" -r html --reporter-html-export "target/report.html" --delay-request 1000
+
+sample newman 
+1) newman run "Address.postman_collection.json" -e "testEnvironment.postman_environment.json"
+2) newman run "Address.postman_collection.json" -e "testEnvironment.postman_environment.json" -r html
+3) newman run "Address.postman_collection.json" -e "testEnvironment.postman_environment.json" -r htmlextra
+4) newman run "Address.postman_collection.json" -e "testEnvironment.postman_environment.json" -r htmlextra --reporter-htmlextra-export  "target/htmlreport.html" 
+
+
+address collection ID 	->  11910468-8ee16d41-086d-465e-be44-fd2cd4f8c68c
+testEnvironment ID 	->  11910468-fabab351-3953-4ece-bb04-466397d9050c
+
+5) newman run "https://api.getpostman.com/collections/11910468-8ee16d41-086d-465e-be44-fd2cd4f8c68c?apikey=PMAK-65f0be90a68fc400018fe0e1-fc60480fe023ddd1c33ef9a737bb65494f" -e "testEnvironment.postman_environment.json"
+
+6) newman run "https://api.getpostman.com/collections/11910468-8ee16d41-086d-465e-be44-fd2cd4f8c68c?apikey=PMAK-65f0be90a68fc400018fe0e1-fc60480fe023ddd1c33ef9a737bb65494f" -e "https://api.getpostman.com/environments/11910468-fabab351-3953-4ece-bb04-466397d9050c?apikey=PMAK-65f0be90a68fc400018fe0e1-fc60480fe023ddd1c33ef9a737bb65494f"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

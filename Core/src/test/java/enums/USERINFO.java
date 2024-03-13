@@ -17,7 +17,7 @@ import static com.KesifPlus.api.ApiUtilities.response;
 import static io.restassured.RestAssured.given;
 
 public enum USERINFO {
-    BUYER("peummonnemane-5141@yopmail.com", "e*y7G2xhsTVAi5u"),
+    BUYER("buyer_urban@mailsac.com", "VHt*zzt*wQNu6XS"),
     CANLI_SATICI("test_seller@mailsac.com", "e976S2rhtySNTdk");
     private String email;
     private String password;
