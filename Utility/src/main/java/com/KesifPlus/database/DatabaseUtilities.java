@@ -20,9 +20,9 @@ public class DatabaseUtilities {
     public static void createConnection() {
         try {
             connection = DriverManager.getConnection(
-                    ConfigurationReader.getProperty("url"),
-                    ConfigurationReader.getProperty("username"),
-                    ConfigurationReader.getProperty("password")
+                    ConfigurationReader.getProperty("urlDb"),
+                    ConfigurationReader.getProperty("usernameDb"),
+                    ConfigurationReader.getProperty("passwordDb")
             );
         } catch (SQLException e) {
             throw new RuntimeException(e);

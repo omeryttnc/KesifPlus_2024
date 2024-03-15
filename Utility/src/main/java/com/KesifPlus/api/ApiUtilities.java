@@ -20,12 +20,20 @@ public class ApiUtilities {
     public static Response response;
     private String token = "";
     private GetAddress getAddress;
+    private Products products;
 
     public GetAddress getGetAddress() {
         if (getAddress == null) {
             getAddress = new GetAddress(token);
         }
         return getAddress;
+    }
+
+    public com.KesifPlus.api.Products getProducts(){
+        if (products == null){
+            products = new Products();
+        }
+        return products;
     }
 
     public ApiUtilities(String email, String password) {

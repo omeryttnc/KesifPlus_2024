@@ -1,4 +1,4 @@
-package stepDefinitions.UI_StepDefs.RegisterPage;
+package stepDefinitions.UI_StepDefs;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
