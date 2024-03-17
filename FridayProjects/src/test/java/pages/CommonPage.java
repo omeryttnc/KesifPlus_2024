@@ -22,6 +22,14 @@ public abstract class CommonPage {
     private SoldItemsPage soldItemsPage;
     private EventsPage eventsPage;
     private MyEventsPage myEventsPage;
+    private YourProductsPage yourProductsPage;
+
+    public YourProductsPage getYourProductsPage(){
+        if(yourProductsPage == null){
+            yourProductsPage = new YourProductsPage();
+        }
+        return yourProductsPage;
+    }
 
     public EventsPage getEventsPage() {
         if (eventsPage == null){
@@ -82,6 +90,12 @@ public abstract class CommonPage {
     public void clickButton(String buttonTitle){
         WebElement element = driver.findElement(By.xpath(
                 "//Button[.='" + buttonTitle +"']"));
+        Utilities.scrollAndClick(element);
+    }
+
+    public void clickHubButton(String title){
+        WebElement element = driver.findElement(By.xpath(
+                "//span[.='" + title + "']"));
         Utilities.scrollAndClick(element);
     }
 

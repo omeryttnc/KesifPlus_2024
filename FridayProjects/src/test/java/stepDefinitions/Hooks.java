@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import com.KesifPlus.HooksImp;
+import com.KesifPlus.database.DatabaseUtilities;
 import com.KesifPlus.utility.ConfigurationReader;
 import com.KesifPlus.utility.Driver;
 import io.cucumber.java.After;
@@ -67,13 +68,13 @@ public class Hooks {
 
     @Before("@DB")
     public void setupDatabase() {
-        //    DatabaseUtilities.createConnection();
+            DatabaseUtilities.createConnection();
 
     }
 
     @After("@DB")
     public void closeDatabase() {
-        //   DatabaseUtilities.closeConnection();
+           DatabaseUtilities.closeConnection();
 
     }
 
