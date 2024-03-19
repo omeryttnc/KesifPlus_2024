@@ -1,6 +1,9 @@
 package com.KesifPlus.database;
 
 import com.KesifPlus.utility.ConfigurationReader;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import lombok.SneakyThrows;
+import org.junit.Test;
 
 import java.sql.*;
 
@@ -11,23 +14,29 @@ public class DatabaseUtilities {
     private static Statement statement;
     private static PreparedStatement preparedStatement;
     public static ResultSet resultSet;
+
     /**
      * method database connection i olusturmak icin kullanildi
      *
      * @author omeryttnc
      * @since 10.02.2024
      */
-    public static void createConnection() {
-        try {
-            connection = DriverManager.getConnection(
-                    ConfigurationReader.getProperty("urlDb"),
-                    ConfigurationReader.getProperty("usernameDb"),
-                    ConfigurationReader.getProperty("passwordDb")
-            );
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    @SneakyThrows
+    public static void createMYSQLConnection() {
+
+        connection = DriverManager.getConnection(
+                ConfigurationReader.getProperty("urlDb"),
+                ConfigurationReader.getProperty("usernameDb"),
+                ConfigurationReader.getProperty("passwordDb")
+        );
+
     }
+
+    @SneakyThrows
+    public static void createSQLITEConnection() {
+        connection = DriverManager.getConnection("jdbc:sqlite:src/test/resources/SqliteDatabase.db");
+    }
+
 
     /**
      * method connectionlarin kapatilmasi icin kullanildi
@@ -36,39 +45,68 @@ public class DatabaseUtilities {
      * @author omeryttnc
      * @since 10.02.2024
      */
+    @SneakyThrows
     public static void closeConnection() {
         if (resultSet != null) {
-            try {
-                resultSet.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            resultSet.close();
         }
         if (statement != null) {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            statement.close();
+        }
+        if (preparedStatement != null) {
+            preparedStatement.close();
         }
         if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            connection.close();
         }
-
     }
 
-    public static void updateQueryStatement(String sql) { // insert update delete
-        try {
-            statement = connection.createStatement();
-            int i = statement.executeUpdate(sql);
-            System.out.println(i);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    @SneakyThrows
+    public static void executeUpdateStatement(String sql) { // insert update delete
+        statement = connection.createStatement();
+        statement.executeUpdate(sql);
+    }
+
+    @SneakyThrows
+    public static ResultSet executeQueryStatement(String sql) { // read
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery(sql);
+        return resultSet;
+    }
+
+
+    @SneakyThrows
+    public void updatePreparedStatement(String sql, Object object1, Object object2, Object object3, Object object4) {
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setObject(1, object1);
+        preparedStatement.setObject(2, object2);
+        preparedStatement.setObject(3, object3);
+        preparedStatement.setObject(4, object4);
+        preparedStatement.executeUpdate();
+    }
+
+    @SneakyThrows
+    public void updatePreparedStatement(String sql, Object object1, Object object2, Object object3) {
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setObject(1, object1);
+        preparedStatement.setObject(2, object2);
+        preparedStatement.setObject(3, object3);
+        preparedStatement.executeUpdate();
+    }
+
+    @SneakyThrows
+    public void updatePreparedStatement(String sql, Object object1, Object object2) {
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setObject(1, object1);
+        preparedStatement.setObject(2, object2);
+        preparedStatement.executeUpdate();
+    }
+
+    @SneakyThrows
+    public void updatePreparedStatement(String sql, Object object1) {
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setObject(1, object1);
+        preparedStatement.executeUpdate();
     }
 
     /**
@@ -78,8 +116,7 @@ public class DatabaseUtilities {
      * @since 13.02.2024
      */
     public static void approveLastProduct() {
-        updateQueryStatement("UPDATE `hub_product` SET `product_listing_state` = 'APPROVED' WHERE `product_listing_state` LIKE 'IN_REVIEW' order BY id DESC limit 1;");
-
+        executeUpdateStatement("UPDATE `hub_product` SET `product_listing_state` = 'APPROVED' WHERE `product_listing_state` LIKE 'IN_REVIEW' order BY id DESC limit 1;");
     }
 }
 // database url https://phpmyadmin-test.urbanicfarm.com/index.php?route=/&route=%2F

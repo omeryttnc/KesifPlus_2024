@@ -1,0 +1,17 @@
+[
+  {
+    "email": "seller_urban2@yopmail.com",
+    "password": "Seller2/",
+    "isPass": true
+  },
+  {
+    "email": "buyer_urban@mailsac.com",
+    "password": "VHt*zzt*wQNu6XS",
+    "isPass": true
+  },
+  {
+    "email": "buyer_urban@mai.com",
+    "password": "VHt*zzt*wQNu6XS",
+    "isPass": false
+  }
+]
