@@ -41,13 +41,13 @@ public static String oneNotAddedVegetableProducts="";
     }
 
     public void updateStatus(){
-        DatabaseUtilities.createConnection();
+        DatabaseUtilities.createMYSQLConnection();
         String sqlQuery = "UPDATE hub_product SET product_listing_state = 'APPROVED' " +
                 "WHERE id = (SELECT id FROM (SELECT MAX(id) AS id FROM hub_product " +
                 "WHERE unique_name = '" + oneNotAddedVegetableProducts + "') AS subquery) " +
                 "AND product_listing_state = 'IN_REVIEW';";
 
-        DatabaseUtilities.updateQueryStatement(sqlQuery);
+        DatabaseUtilities.executeUpdateStatement(sqlQuery);
     }
 
     @FindBy(css = "div[class*='HubManagement_hubProductCartContainer']>span")

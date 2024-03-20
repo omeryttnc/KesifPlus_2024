@@ -1,0 +1,10 @@
+    Read   -> SELECT email,id FROM tableName                                                        -> executeQuery()
+
+    Create -> INSERT INTO tableName (column1,column2) VALUES (column1degeri,column2degeri)          -> executeUpdate()
+    Update -> UPDATE tableName SET columnName=yeniDeger                                             -> executeUpdate()
+    Delete -> DELETE FROM tableName                                                                 -> executeUpdate()
+
+
+    WHERE       -> condition key wordumuz                                 -> DELETE FROM tableName WHERE email='omer@gmail.com'
+    LIMIT       -> gelecek olan query i sinirlandirmak icin kullaniriz    -> SELECT * FROM tableName LIMIT 10
+    ORDER BY    -> siralamak icin kullaniyoruz                            -> SELECT * FROM tableName ORDER BY id Desc LIMIT 1

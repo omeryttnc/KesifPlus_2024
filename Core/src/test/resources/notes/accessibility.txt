@@ -1,0 +1,35 @@
+windows icin telefonu screen mirror
+https://www.vysor.io/
+
+color contrast analyzer
+https://www.tpgi.com/color-contrast-checker/
+
+accessibility automation
+https://www.evinced.com/products/flow-analyzer-for-mobile
+
+android accessibility
+https://play.google.com/store/apps/details?id=com.google.android.apps.accessibility.auditor&hl=en_GB&gl=US
+
+arc chrome plug in
+https://chromewebstore.google.com/detail/chdkkkccnlfncngelccgbgfmjebmkmce
+
+accessibility insight chrome developer tool
+https://accessibilityinsights.io/
+
+wcag kriterleri
+https://www.w3.org/TR/WCAG22/#dfn-images-of-text
+
+android icin accessibility
+voice access
+talkback
+
+ios icin accessibility
+voiceover
+voice control
+
+
+
+
+
+
+

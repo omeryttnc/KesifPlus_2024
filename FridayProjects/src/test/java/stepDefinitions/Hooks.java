@@ -9,7 +9,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import pages.CommonPage;
 
@@ -68,7 +67,7 @@ public class Hooks {
 
     @Before("@DB")
     public void setupDatabase() {
-            DatabaseUtilities.createConnection();
+            DatabaseUtilities.createMYSQLConnection();
 
     }
 
