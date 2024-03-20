@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import com.KesifPlus.HooksImp;
+import com.KesifPlus.database.DatabaseUtilities;
 import com.KesifPlus.utility.ConfigurationReader;
 import com.KesifPlus.utility.Driver;
 import io.cucumber.java.After;
@@ -17,11 +18,8 @@ import static com.KesifPlus.HooksImp.driver;
 
 public class Hooks {
 
-
     public static CommonPage commonPage;
     public static Actions actions;
-
-
 
     @Before(value = "@headless", order = 0)
     public void setIsHeadless() {
@@ -32,7 +30,6 @@ public class Hooks {
     public void setIsFirefox() {
         HooksImp.browserType = "firefox";
     }
-
 
     @Before(value = "@iPhone12", order = 0)
     public void setiPhone12() {
@@ -57,24 +54,17 @@ public class Hooks {
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "screenshots");
         }
-
-
-        Driver.closeDriver();
-
-
+//        Driver.closeDriver();
     }
-
 
     @Before("@DB")
     public void setupDatabase() {
-        //    DatabaseUtilities.createConnection();
-
+            DatabaseUtilities.createConnection();
     }
 
     @After("@DB")
     public void closeDatabase() {
-        //   DatabaseUtilities.closeConnection();
-
+           DatabaseUtilities.closeConnection();
     }
 
     @Before("@user1")
@@ -83,9 +73,6 @@ public class Hooks {
                 "email : " + ConfigurationReader.getProperty("user1_email") +
                         " password : " + ConfigurationReader.getProperty("user1_password")
         );
-
-
     }
-
 
 }

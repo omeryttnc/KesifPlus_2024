@@ -3,10 +3,8 @@ package enums;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
-import manifold.ext.rt.api.This;
 import org.junit.Assert;
 import org.openqa.selenium.html5.LocalStorage;
-import org.openqa.selenium.html5.SessionStorage;
 import org.openqa.selenium.html5.WebStorage;
 
 import java.util.HashMap;

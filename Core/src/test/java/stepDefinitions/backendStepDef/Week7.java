@@ -130,6 +130,6 @@ public class Week7 extends TestCase {
 
     public void test3() {
         ApiUtilities apiUtilities= new ApiUtilities(USERINFO.BUYER.getEmail(), USERINFO.BUYER.getPassword());
-        System.out.println("apiUtilities.getGetAddress().getAllCities() = " + apiUtilities.getGetAddress().getAllCities());
+//        System.out.println("apiUtilities.getGetAddress().getAllCities() = " + apiUtilities.getGetAddress().getAllCities());
     }
 }

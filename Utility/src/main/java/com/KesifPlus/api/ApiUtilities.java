@@ -20,8 +20,16 @@ public class ApiUtilities {
     public static Response response;
     private String token = "";
     private GetAddress getAddress;
+    private Products products;
 
-    public GetAddress getGetAddress() {
+    public com.KesifPlus.api.Products getProducts() {
+        if (products == null) {
+            products = new Products();
+        }
+        return products;
+    }
+
+    public GetAddress getAddress() {
         if (getAddress == null) {
             getAddress = new GetAddress(token);
         }
