@@ -22,14 +22,7 @@ public class ApiUtilities {
     private GetAddress getAddress;
     private Products products;
 
-    public com.KesifPlus.api.Products getProducts() {
-        if (products == null) {
-            products = new Products();
-        }
-        return products;
-    }
-
-    public GetAddress getAddress() {
+    public GetAddress getGetAddress() {
         if (getAddress == null) {
             getAddress = new GetAddress(token);
         }
@@ -67,4 +60,3 @@ public class ApiUtilities {
         responseSpecification.time(Matchers.lessThan(2000L));
     }
 }
-
