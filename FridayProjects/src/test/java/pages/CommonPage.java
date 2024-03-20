@@ -25,7 +25,7 @@ public abstract class CommonPage {
     private YourProductsPage yourProductsPage;
 
     public YourProductsPage getYourProductsPage(){
-        if (yourProductsPage == null){
+        if(yourProductsPage == null){
             yourProductsPage = new YourProductsPage();
         }
         return yourProductsPage;
@@ -95,7 +95,8 @@ public abstract class CommonPage {
 
     public void clickHubButton(String title){
         WebElement element = driver.findElement(By.xpath(
-                "//span[.='" + title +"']"));
+                "//span[.='" + title + "']"));
         Utilities.scrollAndClick(element);
     }
+
 }

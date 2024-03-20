@@ -9,7 +9,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import pages.CommonPage;
 
@@ -18,8 +17,11 @@ import static com.KesifPlus.HooksImp.driver;
 
 public class Hooks {
 
+
     public static CommonPage commonPage;
     public static Actions actions;
+
+
 
     @Before(value = "@headless", order = 0)
     public void setIsHeadless() {
@@ -30,6 +32,7 @@ public class Hooks {
     public void setIsFirefox() {
         HooksImp.browserType = "firefox";
     }
+
 
     @Before(value = "@iPhone12", order = 0)
     public void setiPhone12() {
@@ -54,17 +57,24 @@ public class Hooks {
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "screenshots");
         }
-//        Driver.closeDriver();
+
+
+        Driver.closeDriver();
+
+
     }
+
 
     @Before("@DB")
     public void setupDatabase() {
-            DatabaseUtilities.createConnection();
+            DatabaseUtilities.createMYSQLConnection();
+
     }
 
     @After("@DB")
     public void closeDatabase() {
            DatabaseUtilities.closeConnection();
+
     }
 
     @Before("@user1")
@@ -73,6 +83,9 @@ public class Hooks {
                 "email : " + ConfigurationReader.getProperty("user1_email") +
                         " password : " + ConfigurationReader.getProperty("user1_password")
         );
+
+
     }
+
 
 }

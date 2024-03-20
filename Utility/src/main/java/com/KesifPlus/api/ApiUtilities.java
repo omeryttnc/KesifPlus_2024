@@ -36,6 +36,13 @@ public class ApiUtilities {
         return getAddress;
     }
 
+    public com.KesifPlus.api.Products getProducts(){
+        if (products == null){
+            products = new Products();
+        }
+        return products;
+    }
+
     public ApiUtilities(String email, String password) {
         requestSpecification = RestAssured.given();
         requestSpecification.contentType(ContentType.JSON);

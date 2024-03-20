@@ -24,8 +24,7 @@ public class Products {
     @SneakyThrows
     public List<String> getAllVegetableProducts() {
         ObjectMapper objectMapper = new ObjectMapper();
-        AllProducts allProducts = null;
-        allProducts = objectMapper.readValue(getAllProducts().asString(), AllProducts.class);
+        AllProducts allProducts = objectMapper.readValue(getAllProducts().asString(), AllProducts.class);
         return allProducts
                 .getProducts()
                 .stream()
@@ -34,48 +33,10 @@ public class Products {
                 .collect(Collectors.toList());
     }
 
-    public String getOneNotAddedVegetableProducts() {
-
-        List<String> all = getAllVegetableProducts();
-        List<String> added = getAllAddedVegetableProducts();
-        all.removeAll(added);
-        return all.getFirst();
-    }
-
-    public void addNewVegetableProduct(String addedProduct) {
-        AddProduct addProduct = new AddProduct(
-                "VEGETABLES_AND_FRUITS_HUB",
-                20,
-                addedProduct,
-                30,
-                "UNIT_LIBRE",
-                false,
-                false
-        );
-        given()
-                .spec(requestSpecification)
-                .body(addProduct)
-                .when()
-                .post("/account/hub/product/add")
-                .then()
-                .assertThat()
-                .spec(responseSpecification);
-    }
-
     private Response getAllProducts() {
         return given()
                 .spec(requestSpecification)
                 .post("/public/product/getAllProducts");
-    }
-
-    private record AddProduct(
-            String hubUniqueName,
-            int price,
-            String productUniqueName,
-            int stock,
-            String unit,
-            boolean isOrganic,
-            boolean isTrade) {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -119,6 +80,45 @@ public class Products {
         public String getUniqueName() {
             return uniqueName;
         }
+    }
+
+    public String getOneNotAddedVegetableProducts() {
+        List<String> all = getAllVegetableProducts();
+        List<String> added = getAllAddedVegetableProducts();
+        all.removeAll(added);
+        return all.getFirst();
+    }
+
+    public void addNewVegetableProduct(String addedProduct) {
+        AddProduct addProduct = new AddProduct(
+                "VEGETABLES_AND_FRUITS_HUB",
+                5,
+                addedProduct,
+                50,
+                "UNIT_LIBRE",
+                false,
+                false
+        );
+        given()
+                .spec(requestSpecification)
+                .body(addProduct)
+                .when()
+                .post("/account/hub/product/add")
+                .then()
+                .assertThat()
+                .spec(responseSpecification);
+    }
+
+    private record AddProduct(
+            String hubUniqueName,
+            int price,
+            String productUniqueName,
+            int stock,
+            String unit,
+            boolean isOrganic,
+            boolean isTrade) {
 
     }
+
+
 }

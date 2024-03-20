@@ -67,7 +67,7 @@ public class Hooks {
 
     @Before("@DB")
     public void setupDatabase() {
-        DatabaseUtilities.createConnection();
+        DatabaseUtilities.createMYSQLConnection();
 
     }
 

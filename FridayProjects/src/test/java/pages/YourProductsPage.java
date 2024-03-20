@@ -2,6 +2,7 @@ package pages;
 
 import com.KesifPlus.api.ApiUtilities;
 import com.KesifPlus.database.DatabaseUtilities;
+import com.KesifPlus.ui.Utilities;
 import enums.USERINFO;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
@@ -9,11 +10,10 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class YourProductsPage extends CommonPage {
+public class YourProductsPage extends CommonPage{
 
-    public static String oneNotAddedVegetableProducts = "";
-
-    public void addNewVegetable() {
+public static String oneNotAddedVegetableProducts="";
+    public void addNewVegetable(){
         ApiUtilities apiUtilities = new ApiUtilities(USERINFO.BUYER.getEmail(), USERINFO.BUYER.getPassword());
         oneNotAddedVegetableProducts = apiUtilities.getProducts().getOneNotAddedVegetableProducts();
 
@@ -24,7 +24,7 @@ public class YourProductsPage extends CommonPage {
         Assert.assertTrue(isAny(apiUtilities));
     }
 
-    public boolean isNone(ApiUtilities apiUtilities) {
+    public boolean isNone(ApiUtilities apiUtilities){
         boolean isNone = apiUtilities.getProducts()
                 .getAllAddedVegetableProducts()
                 .stream()
@@ -32,7 +32,7 @@ public class YourProductsPage extends CommonPage {
         return isNone;
     }
 
-    public boolean isAny(ApiUtilities apiUtilities) {
+    public boolean isAny(ApiUtilities apiUtilities){
         boolean isAny = apiUtilities.getProducts()
                 .getAllAddedVegetableProducts()
                 .stream()
@@ -40,21 +40,14 @@ public class YourProductsPage extends CommonPage {
         return isAny;
     }
 
-    public void updateStatus() {
-        DatabaseUtilities.createConnection();
+    public void updateStatus(){
+        DatabaseUtilities.createMYSQLConnection();
         String sqlQuery = "UPDATE hub_product SET product_listing_state = 'APPROVED' " +
                 "WHERE id = (SELECT id FROM (SELECT MAX(id) AS id FROM hub_product " +
                 "WHERE unique_name = '" + oneNotAddedVegetableProducts + "') AS subquery) " +
                 "AND product_listing_state = 'IN_REVIEW';";
 
-/*        String sqlQuery2="UPDATE hub_product SET product_listing_state = 'APPROVED' " +
-                "WHERE unique_name = '" + oneNotAddedVegetableProducts + "' " +
-                "AND product_listing_state = 'IN_REVIEW' " +
-                "ORDER BY id DESC " +
-                "LIMIT 1;";
-
- */
-        DatabaseUtilities.updateQueryStatement(sqlQuery);
+        DatabaseUtilities.executeUpdateStatement(sqlQuery);
     }
 
     @FindBy(css = "div[class*='HubManagement_hubProductCartContainer']>span")
@@ -62,19 +55,17 @@ public class YourProductsPage extends CommonPage {
     @FindBy(css = "div[class*='HubManagement_hubProductCartContainer']>img")
     private List<WebElement> productNameList;
 
-    public void verifyStatus() {
+    public void verifyStatus(){
+        Utilities.waitFor(3);
         String status = "";
-//        Utilities.waitFor(5);
         for (int i = 0; i < productNameList.size(); i++) {
-            if (productNameList.get(i).getAttribute("alt").equalsIgnoreCase(oneNotAddedVegetableProducts)) {
+            if(productNameList.get(i).getAttribute("alt").equalsIgnoreCase(oneNotAddedVegetableProducts)){
                 status = productStatusList.get(i).getText();
                 System.out.println("status = " + status);
             }
-//            System.out.println("productNameList = " + productNameList.get(i).getText());
-//            System.out.println("productStatusList = " + productStatusList.get(i).getAttribute("alt"));
         }
-//        System.out.println("oneNotAddedVegetableProducts = " + oneNotAddedVegetableProducts);
         Assert.assertEquals("APPROVED", status);
+
     }
 
 }
