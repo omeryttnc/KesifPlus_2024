@@ -17,4 +17,10 @@ pipeline {
       }
     }
   }
+
+  post {
+      always {
+          emailext attachmentsPattern: 'target/report/newman.html', body: '', subject: 'newman rapor', to: 'schukrukilic@gmail.com'
+      }
+  }
 }
