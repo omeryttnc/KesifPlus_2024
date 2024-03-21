@@ -1,0 +1,24 @@
+
+pipeline {
+  agent any
+
+  tools {nodejs "NodeJS-21.7.1"}
+
+  stages {
+    stage('Install Postman CLI') {
+    }
+
+    stage('Postman CLI Login') {
+      steps {
+        bat 'postman login --with-api-key PMAK-65f95816480e7100010a97ec-dd63c133bec185c4a6e753a6337d2fb9fd'
+      }
+    }
+
+    stage('Running collection') {
+      steps {
+        bat 'postman collection run "23507450-c8154f91-92de-49d4-8007-464bdc8fea15" -e "23507450-d5752f0c-ecf8-420d-999b-48e7fcd7094b" -d "src/test/resources/postmanResource/userinfo.json"'
+      }
+    }
+  }
+}
+
