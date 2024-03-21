@@ -16,7 +16,7 @@ pipeline {
 
     stage('Running collection') {
       steps {
-        bat 'postman collection run "23507450-c8154f91-92de-49d4-8007-464bdc8fea15" -e "23507450-d5752f0c-ecf8-420d-999b-48e7fcd7094b" -d "src/test/resources/postmanResource/userinfo.json"'
+        bat 'postman collection run "23507450-c8154f91-92de-49d4-8007-464bdc8fea15" -e "23507450-d5752f0c-ecf8-420d-999b-48e7fcd7094b" -d "FridayProjects/src/test/resources/postmanResource/userinfo.json"'
       }
     }
   }
