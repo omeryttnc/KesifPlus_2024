@@ -118,6 +118,15 @@ public class DatabaseUtilities {
     public static void approveLastProduct() {
         executeUpdateStatement("UPDATE `hub_product` SET `product_listing_state` = 'APPROVED' WHERE `product_listing_state` LIKE 'IN_REVIEW' order BY id DESC limit 1;");
     }
+
+    public static Connection getConnection() {
+        return connection;
+    }
+
+
+    public static void createSqliteTable(String tableSQLText){
+
+    }
 }
 // database url https://phpmyadmin-test.urbanicfarm.com/index.php?route=/&route=%2F
 
